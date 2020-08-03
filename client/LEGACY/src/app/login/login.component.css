@@ -1,0 +1,29 @@
+.form {
+  width: 500px;
+  padding: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#button {
+  margin-top: 13px;
+  width: 481px;
+}
+
+#Adress-Mail-Text {
+  margin-top: 7px;
+}
+
+#First-Name-Text {
+  margin-top: 7px;
+}
+
+#Last-Name-Text {
+  margin-top: 7px;
+}
+
+#Password-Text {
+  margin-top: 7px;
+}
