@@ -1,12 +1,13 @@
 <div class="form">
-  <form [formGroup]="signUpForm">
+  <form >
     <label id="Username-Text" for="Username">Username</label>
     <input
       class="form-control"
       id="Username"
       type="text"
       placeholder="Username"
-      formControlName="Username"
+      [(ngModel)]="UserName"
+      [ngModelOptions]="{standalone: true}"
     />
 
     <label id="Adress-Mail-Text" for="Adress Mail">Adress Mail</label>
@@ -15,7 +16,8 @@
       id="Adress-Mail"
       type="email"
       placeholder="Adress Mail"
-      formControlName="Adress-Mail"
+      [(ngModel)]="AdressMail"
+      [ngModelOptions]="{standalone: true}"
     />
 
     <label id="First-Name-Text" for="First Name">First Name</label>
@@ -24,7 +26,8 @@
       id="First-Name"
       type="text"
       placeholder="First Name"
-      formControlName="First-Name"
+      [(ngModel)]="FirstName"
+      [ngModelOptions]="{standalone: true}"
     />
 
     <label id="Last-Name-Text" for="Last-name">Last Name</label>
@@ -33,7 +36,8 @@
       id="Last-Name"
       type="text"
       placeholder="Last Name"
-      formControlName="Last-Name"
+      [(ngModel)]="LastName"
+      [ngModelOptions]="{standalone: true}"
     />
 
     <label id="Password-Text" for="Password">Password</label>
@@ -42,7 +46,8 @@
       id="Password"
       type="password"
       placeholder="Password"
-      formControlName="Password"
+      [(ngModel)]="Password"
+      [ngModelOptions]="{standalone: true}"
     />
   </form>
   <button (click)="onSignUp()" id="button" class="btn btn-outline-primary" [routerLink]="['/login']">

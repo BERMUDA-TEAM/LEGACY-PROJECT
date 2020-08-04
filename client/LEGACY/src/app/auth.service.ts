@@ -7,7 +7,6 @@ import { HttpClient } from '@angular/common/http';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-
   signUp(
     userName: string,
     addressMail: string,
