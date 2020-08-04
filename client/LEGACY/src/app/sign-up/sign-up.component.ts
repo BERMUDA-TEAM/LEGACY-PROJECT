@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -7,29 +9,38 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent implements OnInit {
-  userName: string;
-  addressMail: string;
-  firstName: string;
-  lastName: string;
-  password: string;
-  input1 = 'hello';
-  constructor(private http: HttpClient) {}
+  signUpForm: FormGroup;
 
-  postData() {
-    const url: string = 'http://localhost:8000/signUp';
-    this.http
-      .post(url, {
-        userName: this.userName,
-        addressMail: this.userName,
-        firstName: this.firstName,
-        lastName: this.lastName,
-        password: this.password,
-      })
-      .toPromise()
-      .then((data: string) => {
-        console.log(data);
-      });
+  constructor(
+    private formBuilder: FormBuilder,
+    private auth: AuthService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.signUpForm = this.formBuilder.group({
+      userName: [null, [Validators.required]],
+      addressMail: [null, [Validators.required]],
+      firstName: [null, [Validators.required]],
+      lastName: [null, [Validators.required]],
+      password: [null, [Validators.required]],
+    });
   }
 
-  ngOnInit(): void {}
+  onSignUp() {
+    const userName = this.signUpForm.get('Username').value;
+    const addressMail = this.signUpForm.get('Adress-Mail').value;
+    const firstName = this.signUpForm.get('First-Name').value;
+    const lastName = this.signUpForm.get('Last-Name').value;
+    const password = this.signUpForm.get('Password').value;
+    this.auth
+      .signUp(userName, addressMail, firstName, lastName, password)
+      .then(() => {
+        console.log('navigate');
+        this.router.navigate(['/login'])
+      })
+      .catch(() => {
+        console.log('error');
+      });
+  }
 }

@@ -1,36 +1,39 @@
 <div class="form">
-  <form>
+  <form [formGroup]="signUpForm">
     <label id="Username-Text" for="Username">Username</label>
     <input
       class="form-control"
       id="Username"
       type="text"
       placeholder="Username"
+      formControlName="Username"
     />
 
     <label id="Adress-Mail-Text" for="Adress Mail">Adress Mail</label>
     <input
       class="form-control"
-      id="Adress Mail"
+      id="Adress-Mail"
       type="email"
       placeholder="Adress Mail"
-      [(ngModel)]="input1"
+      formControlName="Adress-Mail"
     />
 
     <label id="First-Name-Text" for="First Name">First Name</label>
     <input
       class="form-control"
-      id="First Name"
+      id="First-Name"
       type="text"
       placeholder="First Name"
+      formControlName="First-Name"
     />
 
     <label id="Last-Name-Text" for="Last-name">Last Name</label>
     <input
       class="form-control"
-      id="Last-name"
+      id="Last-Name"
       type="text"
       placeholder="Last Name"
+      formControlName="Last-Name"
     />
 
     <label id="Password-Text" for="Password">Password</label>
@@ -39,9 +42,10 @@
       id="Password"
       type="password"
       placeholder="Password"
+      formControlName="Password"
     />
   </form>
-  <button (click)="postData()" id="button" class="btn btn-outline-primary">
+  <button (click)="onSignUp()" id="button" class="btn btn-outline-primary" [routerLink]="['/login']">
     SUBMIT
   </button>
 </div>
