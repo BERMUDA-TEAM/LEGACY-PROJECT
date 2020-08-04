@@ -1,18 +1,27 @@
 //imports and declaration
 const express = require("express");
-const db = require("./database.js");
-const app = express();
-const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const Guide = require("./guideSchema.js");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const bodyParser = require("body-parser");
 const multer = require("multer");
 const cors = require("cors");
-const DIR = "./uploads/";
+const app = express();
 
-//PORT
+//PORT.
 const PORT = 8000;
 
-//MIDDLEWARES
+//MULTER PHOTO STORAGE.
+const DIR = "./uploads/";
+
+//DATABASE CONNECTION.
+const db = require("./database.js");
+
+//DATABASE COLLECTIONS.
+const Guide = require("./guideSchema.js");
+const User = require("./UserSchema");
+
+//MIDDLEWARES.
 app.use(bodyParser.json());
 app.use(cors());
 app.use("/uploads", express.static("uploads"));
@@ -120,4 +129,62 @@ app.listen(PORT, (err) => {
     console.log("Error : ", err);
   }
   console.log(`Local Guide is running on http://localhost:${PORT}`);
+});
+
+////////////////////////////////////////////////////AUTHENTICATION---OMAR/////////////////////////////////////////////////////////
+
+app.post("/signUp", (req, res) => {
+  let newUser = {
+    userName: req.body.userName,
+    addressMail: req.body.addressMail,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    password: req.body.password,
+  };
+
+  User.findOne({ addressMail: req.body.addressMail })
+    .then((user) => {
+      if (!user) {
+        bcrypt.hash(req.body.password, 10, (err, hash) => {
+          newUser.password = hash;
+          User.create(newUser)
+            .then((user) => {
+              res.json(user);
+            })
+            .catch((err) => {
+              res.send(err);
+            });
+        });
+      } else {
+        res.json("USER ALREADY EXIST");
+      }
+    })
+    .catch((err) => {
+      res.send("ERROOOOR");
+    });
+});
+
+app.post("/signIn", (req, res) => {
+  User.findOne({ addressMail: req.body.addressMail })
+    .then((user) => {
+      if (user) {
+        if (bcrypt.compareSync(req.body.password, user.password)) {
+          const payload = {
+            addressMail: user.addressMail,
+            userName: user.userName,
+          };
+          let token = jwt.sign(payload, process.env.SECRET_KEY, {
+            expiresIn: 2020,
+          });
+          res.send(token);
+        } else {
+          res.json("WRONG PASSWORD");
+        }
+      } else {
+        res.json("USER NOT FOUND PLEASE CREATE AN ACCOUNT FIRST");
+      }
+    })
+    .catch((err) => {
+      res.send("ERROOOOR");
+    });
 });
