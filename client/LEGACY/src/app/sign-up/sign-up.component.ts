@@ -12,7 +12,7 @@ export class SignUpComponent implements OnInit {
   firstName: string;
   lastName: string;
   password: string;
-
+  input1 = 'hello';
   constructor(private http: HttpClient) {}
 
   postData() {
