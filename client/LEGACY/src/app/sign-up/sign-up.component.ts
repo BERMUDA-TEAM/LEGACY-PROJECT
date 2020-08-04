@@ -12,11 +12,11 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  UserName = '';
-  AdressMail = '';
-  FirstName = '';
-  LastName = '';
-  Password = '';
+  UserName: string = '';
+  AdressMail: string = '';
+  FirstName: string = '';
+  LastName: string = '';
+  Password: string = '';
 
   onSignUp() {
     this.auth
