@@ -1,4 +1,4 @@
-<div class="form">
+<!-- <div class="form">
   <form >
     <label id="Username-Text" for="Username">Username</label>
     <input
@@ -53,4 +53,118 @@
   <button (click)="onSignUp()" id="button" class="btn btn-outline-primary" [routerLink]="['/login']">
     SUBMIT
   </button>
+</div> -->
+
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <form class="login100-form validate-form">
+        <span class="login100-form-title p-b-34">
+          Sign Up
+        </span>
+
+        <div
+          class="wrap-input100 rs1-wrap-input100 validate-input m-b-20"
+          data-validate="Type user name"
+        >
+          <input
+            id="username"
+            class="input100 form-control"
+            type="text"
+            name="username"
+            placeholder="User name"
+            [(ngModel)]="UserName"
+            [ngModelOptions]="{ standalone: true }"
+          />
+          <span class="focus-input100"></span>
+        </div>
+
+        <div
+          class="wrap-input100 rs1-wrap-input100 validate-input m-b-20"
+          data-validate="Type user name"
+        >
+          <input
+            id="adress-mail"
+            class="input100 form-control"
+            type="text"
+            name="adress-mail"
+            placeholder="Adress Mail"
+            [(ngModel)]="AdressMail"
+            [ngModelOptions]="{ standalone: true }"
+          />
+          <span class="focus-input100"></span>
+        </div>
+
+        <div
+          class="wrap-input100 rs1-wrap-input100 validate-input m-b-20 "
+          data-validate="Type user name"
+        >
+          <input
+            id="first-name"
+            class="input100 form-control"
+            type="text"
+            name="first-name"
+            placeholder="First Name"
+            [(ngModel)]="FirstName"
+            [ngModelOptions]="{ standalone: true }"
+          />
+          <span class="focus-input100"></span>
+        </div>
+
+        <div
+          class="wrap-input100 rs1-wrap-input100 validate-input m-b-20"
+          data-validate="Type user name"
+        >
+          <input
+            id="last-name"
+            class="input100 form-control"
+            type="text"
+            name="last-name"
+            placeholder="Last Name"
+            [(ngModel)]="LastName"
+            [ngModelOptions]="{ standalone: true }"
+          />
+          <span class="focus-input100"></span>
+        </div>
+
+        <div
+          class="wrap-input100 rs2-wrap-input100 validate-input m-b-20 "
+          data-validate="Type password"
+        >
+          <input
+            class="input100 form-control"
+            type="password"
+            name="pass"
+            placeholder="Password"
+            [(ngModel)]="Password"
+            [ngModelOptions]="{ standalone: true }"
+          />
+          <span class="focus-input100"></span>
+        </div>
+
+        <div class="container-login100-form-btn">
+          <button class="login100-form-btn" (click)="onSignUp()">
+            Sign Up
+          </button>
+        </div>
+
+        <div class="w-full text-center p-t-27 p-b-239">
+          <span class="txt1">
+            Welcome
+          </span>
+
+          <a  class="txt2">
+           To Local Guide Website
+          </a>
+        </div>
+      </form>
+
+      <div
+        class="login100-more"
+        style="background-image: url('images/bg-01.jpg');"
+      ></div>
+    </div>
+  </div>
 </div>
+
+<div id="dropDownSelect1"></div>
