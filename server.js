@@ -164,7 +164,7 @@ app.post("/signUp", (req, res) => {
     });
 });
 
-app.post("/signIn", (req, res) => {
+app.post("/LogIn", (req, res) => {
   User.findOne({ addressMail: req.body.addressMail })
     .then((user) => {
       if (user) {
