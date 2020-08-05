@@ -7,9 +7,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, SignUpComponent],
+  declarations: [AppComponent, LoginComponent, SignUpComponent, MainComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
