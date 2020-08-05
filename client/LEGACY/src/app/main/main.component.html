@@ -2,8 +2,8 @@
 <nav class="navbar navbar-light bg-light static-top">
   <div class="container">
     <a class="navbar-brand">LOGO</a>
-    <a class="btn btn-primary" href="#">Sign In</a>
-    <a class="btn btn-primary" href="#">LOG In</a>
+    <a class="btn btn-primary" [routerLink]="'/signin'">Sign In</a>
+    <a class="btn btn-primary" [routerLink]="'/signup'">Sign Up</a>
   </div>
 </nav>
 
@@ -26,10 +26,8 @@
 <section class="showcase">
   <div class="container-fluid p-0">
     <div class="row no-gutters">
-      <div
-        class="col-lg-6 order-lg-2 text-white showcase-img"
-        style="background-image: url('img/bg-showcase-1.jpg');"
-      ></div>
+      <div class="col-lg-6 order-lg-2 text-white showcase-img">
+      </div>
       <div class="col-lg-6 order-lg-1 my-auto showcase-text">
         <h2>here1</h2>
         <p class="lead mb-0">
@@ -38,10 +36,7 @@
       </div>
     </div>
     <div class="row no-gutters">
-      <div
-        class="col-lg-6 text-white showcase-img"
-        style="background-image: url('img/bg-showcase-2.jpg');"
-      ></div>
+      <div class="col-lg-6 text-white showcase-img"></div>
       <div class="col-lg-6 my-auto showcase-text">
         <h2>hERE 2</h2>
         <p class="lead mb-0">
@@ -50,10 +45,8 @@
       </div>
     </div>
     <div class="row no-gutters">
-      <div
-        class="col-lg-6 order-lg-2 text-white showcase-img"
-        style="background-image: url('img/bg-showcase-3.jpg');"
-      ></div>
+      <div class="col-lg-6 order-lg-2 text-white showcase-img">
+      </div>
       <div class="col-lg-6 order-lg-1 my-auto showcase-text">
         <h2>Easy to Use &amp; Customize</h2>
         <p class="lead mb-0">
@@ -116,17 +109,17 @@
       <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
         <ul class="list-inline mb-0">
           <li class="list-inline-item mr-3">
-            <a href="#">
+            <a>
               <i class="fab fa-facebook fa-2x fa-fw"></i>
             </a>
           </li>
           <li class="list-inline-item mr-3">
-            <a href="#">
+            <a>
               <i class="fab fa-twitter-square fa-2x fa-fw"></i>
             </a>
           </li>
           <li class="list-inline-item">
-            <a href="#">
+            <a>
               <i class="fab fa-instagram fa-2x fa-fw"></i>
             </a>
           </li>
