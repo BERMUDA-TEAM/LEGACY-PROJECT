@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainComponent } from './main/main.component';
 import { UserComponent } from './user/user.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,11 @@ import { UserComponent } from './user/user.component';
     MainComponent,
     UserComponent,
   ],
+
+
+
+@NgModule({
+  declarations: [AppComponent, LoginComponent, SignUpComponent, MainComponent, AdminComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

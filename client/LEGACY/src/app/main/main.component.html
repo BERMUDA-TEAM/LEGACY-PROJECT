@@ -1,10 +1,23 @@
 <!-- Navigation -->
-<nav class="navbar navbar-light bg-light static-top">
+<!-- <nav class="navbar navbar-light bg-light static-top">
   <div class="container">
     <a class="navbar-brand">LOGO</a>
-    <a class="btn btn-primary" href="#">Sign In</a>
-    <a class="btn btn-primary" href="#">LOG In</a>
+    <a class="btn btn-primary" [routerLink]="'/signin'">Sign In</a>
+    <a class="btn btn-primary" [routerLink]="'/signup'">Sign Up</a>
   </div>
+</nav> -->
+
+<nav class="navbar navbar-light bg-light">
+  <img src="./main-images/8fdeacd7-db59-40f1-a008-73f016db08e1_200x200.png" />
+  <a
+
+    class="btn btn-outline-success"
+    [routerLink]="'/signin'"
+    >SIGN IN</a
+  >
+  <a id="buttonLOG-IN " class="btn btn-outline-success" [routerLink]="'/signup'"
+    >SIGN UP</a
+  >
 </nav>
 
 <!-- Masthead -->
@@ -13,8 +26,8 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-9 mx-auto">
-        <h1 class="mb-5">
-          WRITE STNIG
+        <h1 class="mb-5 " >
+          WELCOME TO LOCAL GUIDE
         </h1>
       </div>
       <div class="col-md-10 col-lg-8 col-xl-7 mx-auto"></div>
@@ -22,50 +35,48 @@
   </div>
 </header>
 
+<div class="jumbotron jumbotron-fluid">
+  <div>
+    <h1 class="display-4 text-center">MOST VISITED PLACES IN TUNISIA</h1>
+  </div>
+</div>
+
 <!-- Image Showcases -->
 <section class="showcase">
   <div class="container-fluid p-0">
     <div class="row no-gutters">
-      <div
-        class="col-lg-6 order-lg-2 text-white showcase-img"
-        style="background-image: url('img/bg-showcase-1.jpg');"
-      ></div>
+      <div class="col-lg-6 order-lg-2 text-white showcase-img"></div>
       <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-        <h2>here1</h2>
+        <h2>SAHARA</h2>
         <p class="lead mb-0">
-          DESCRIPTION
+          The Tunisian Sahara encourages contemplation whether you're staying in
+          a luxury hotel, a well-equipped campsite or a tent right in the heart
+          of the desert. It comes to life in a 4x4, speeding over rocky roads,
+          or on the back of a camel. It can also offer adrenaline junkies the
+          speed and thrills of extreme sports.
         </p>
       </div>
     </div>
     <div class="row no-gutters">
-      <div
-        class="col-lg-6 text-white showcase-img"
-        style="background-image: url('img/bg-showcase-2.jpg');"
-      ></div>
+      <div class="col-lg-6 text-white showcase-img"></div>
       <div class="col-lg-6 my-auto showcase-text">
-        <h2>hERE 2</h2>
+        <h2>KAIROUAN</h2>
         <p class="lead mb-0">
-          des 2
-        </p>
-      </div>
-    </div>
-    <div class="row no-gutters">
-      <div
-        class="col-lg-6 order-lg-2 text-white showcase-img"
-        style="background-image: url('img/bg-showcase-3.jpg');"
-      ></div>
-      <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-        <h2>Easy to Use &amp; Customize</h2>
-        <p class="lead mb-0">
-          Landing Page is just HTML and CSS with a splash of SCSS for users who
-          demand some deeper customization options. Out of the box, just add
-          your content and images, and your new landing page will be ready to
-          go!
+          Located in the centre of Tunisia in a plain at an almost equal
+          distance from the sea and the mountain, Kairouan is the most ancient
+          Arabo-Muslim base of the Maghreb (670 AD) and one of its principal
+          holy cities.
         </p>
       </div>
     </div>
   </div>
 </section>
+
+<div class="jumbotron jumbotron-fluid">
+  <div>
+    <h1 class="display-4 text-center"> <h2>“TAKE ONLY MEMORIES, LEAVE ONLY FOOTPRINTS”</h2></h1>
+  </div>
+</div>
 
 <!-- Testimonials -->
 <section class="testimonials text-center bg-light">
@@ -74,29 +85,42 @@
     <div class="row">
       <div class="col-lg-4">
         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-          <img class="img-fluid rounded-circle mb-3" src="" alt="" />
+          <img
+            class="img-fluid rounded-circle mb-3"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSapohvygVlUwEjxIhaAHP86EGUJXf3thCbSQ&usqp=CAU"
+          />
           <h5>Margaret E.</h5>
           <p class="font-weight-light mb-0">
-            "This is fantastic! Thanks so much guys!"
+            "Yes I would , it was a very good adventure well organised and
+            executed. Well done !"
           </p>
         </div>
       </div>
       <div class="col-lg-4">
         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-          <img class="img-fluid rounded-circle mb-3" src="" alt="" />
+          <img
+            class="img-fluid rounded-circle mb-3"
+            src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            alt=""
+          />
           <h5>Fred S.</h5>
           <p class="font-weight-light mb-0">
-            "Bootstrap is amazing. I've been using it to create lots of super
-            nice landing pages."
+            "We will recommend LOCAL GUIDE to my friends in UK. Many thanks for
+            a good trip."
           </p>
         </div>
       </div>
       <div class="col-lg-4">
         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-          <img class="img-fluid rounded-circle mb-3" src="" alt="" />
+          <img
+            class="img-fluid rounded-circle mb-3"
+            src="https://i.pinimg.com/originals/8e/0f/70/8e0f709551d0bc63edd2aac7cb129e19.jpg"
+            alt=""
+          />
           <h5>Sarah W.</h5>
           <p class="font-weight-light mb-0">
-            "Thanks so much for making these free resources available to us!"
+            " Yes, it was a very memorable trip and one that we would suggest to
+            other people. Fine job! "
           </p>
         </div>
       </div>
@@ -104,33 +128,30 @@
   </div>
 </section>
 
-<!-- Footer -->
 <footer class="footer bg-light">
   <div class="container">
     <div class="row">
       <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
-        <p class="text-muted small mb-4 mb-lg-0">
-          &copy; Your LOCAL GUIDE 2020. All Rights Reserved.
-        </p>
-      </div>
-      <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
-        <ul class="list-inline mb-0">
-          <li class="list-inline-item mr-3">
-            <a href="#">
-              <i class="fab fa-facebook fa-2x fa-fw"></i>
-            </a>
-          </li>
-          <li class="list-inline-item mr-3">
-            <a href="#">
-              <i class="fab fa-twitter-square fa-2x fa-fw"></i>
-            </a>
-          </li>
+        <ul class="list-inline mb-2">
           <li class="list-inline-item">
-            <a href="#">
-              <i class="fab fa-instagram fa-2x fa-fw"></i>
-            </a>
+            <a href="#">About</a>
+          </li>
+          <li class="list-inline-item">&sdot;</li>
+          <li class="list-inline-item">
+            <a href="#">Contact</a>
+          </li>
+          <li class="list-inline-item">&sdot;</li>
+          <li class="list-inline-item">
+            <a href="#">Terms of Use</a>
+          </li>
+          <li class="list-inline-item">&sdot;</li>
+          <li class="list-inline-item">
+            <a href="#">Privacy Policy</a>
           </li>
         </ul>
+        <p class="text-muted small mb-4 mb-lg-0">
+          &copy; LOCAL GUIDE 2020. All Rights Reserved.
+        </p>
       </div>
     </div>
   </div>

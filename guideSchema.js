@@ -15,5 +15,4 @@ let guideSchema = new mongoose.Schema({
 })
 
 const Guide = new mongoose.model('Guide', guideSchema)
-
 module.exports = Guide

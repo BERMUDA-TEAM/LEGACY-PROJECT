@@ -8,9 +8,9 @@ import { LoginService } from './login.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private auth: LoginService, private router: Router) {}
+  constructor(private auth: LoginService, private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   AdressMail: string = '';
   Password: string = '';
@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   onLogIn() {
     this.auth
       .LogIn(this.AdressMail, this.Password)
+      
       .then(() => {
         console.log('navigate');
       })
