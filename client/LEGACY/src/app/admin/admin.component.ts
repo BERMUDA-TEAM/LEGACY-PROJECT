@@ -31,7 +31,10 @@ export class AdminComponent implements OnInit {
         this.allGuides = datas
       })
   }
-
+  uploadHandler(e) {
+    console.log("changed")
+    console.log(e.target.files[0])
+  }
   readonly allGuidesUrl = "http://localhost:8000/guides"
 
   deleteAguide(name) {
