@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   onLogIn() {
     this.auth
       .LogIn(this.AdressMail, this.Password)
+      
       .then(() => {
         console.log('navigate');
       })
