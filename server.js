@@ -122,8 +122,6 @@ app.put("/guides/:name", (req, res) => {
 //         res.json('POST REGISTER ROUTE')
 //     })
 
-
-
 app.post("/signUp", (req, res) => {
   let newUser = {
     userName: req.body.userName,
@@ -156,29 +154,49 @@ app.post("/signUp", (req, res) => {
 });
 
 app.post("/LogIn", (req, res) => {
-  User.findOne({ addressMail: req.body.addressMail })
-    .then((user) => {
-      if (user) {
-        if (bcrypt.compareSync(req.body.password, user.password)) {
-          const payload = {
-            addressMail: user.addressMail,
-            userName: user.userName,
-          };
-          let token = jwt.sign(payload, process.env.SECRET_KEY, {
-            expiresIn: 2020,
-          });
-          res.send(token);
-        } else {
-          res.json("WRONG PASSWORD");
-        }
+  console.log("mail FRONT", req.body.addressMail);
+  console.log("not hashed password front", req.body.password);
+  User.findOne({ addressMail: req.body.addressMail }, (error, user) => {
+    if (error) {
+      console.log(error);
+    } else {
+      if (!user) {
+        res.status(401).send("invalid email");
+      } else if (bcrypt.compareSync(req.body.password, user.password)) {
+        let payload = { subject: user._id };
+        let token = jwt.sign(payload, "secretKey");
+        res.status(200).send({ token });
+        console.log(token);
       } else {
-        res.json("USER NOT FOUND PLEASE CREATE AN ACCOUNT FIRST");
+        res.status(401).send("invalid password");
       }
-    })
-    .catch((err) => {
-      res.send("ERROOOOR");
-    });
+    }
+  });
 });
+
+//   User.findOne({ addressMail: req.body.addressMail })
+//     .then((user) => {
+//       if (user) {
+//         if (bcrypt.compareSync(req.body.password, user.password)) {
+//           const payload = {
+//             addressMail: user.addressMail,
+//             userName: user.userName,
+//           };
+//           let token = jwt.sign(payload, process.env.SECRET_KEY, {
+//             expiresIn: 2020,
+//           });
+//           res.send(token);
+//         } else {
+//           res.json("WRONG PASSWORD");
+//         }
+//       } else {
+//         res.json("USER NOT FOUND PLEASE CREATE AN ACCOUNT FIRST");
+//       }
+//     })
+//     .catch((err) => {
+//       res.send("ERROOOOR");
+//     });
+// });
 
 //listening th server
 
@@ -188,4 +206,3 @@ app.listen(PORT, (err) => {
   }
   console.log(`Local Guide is running on http://localhost:${PORT}`);
 });
-
