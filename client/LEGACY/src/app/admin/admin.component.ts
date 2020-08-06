@@ -12,8 +12,6 @@ export class AdminComponent implements OnInit {
   posts: Guides;
   guides: any;
   allGuides: any = [];
-  // selectedFile: File = null;
-  // fd = new FormData();
 
   constructor(private http: HttpClient) {
     this.posts = {
@@ -23,18 +21,20 @@ export class AdminComponent implements OnInit {
       gender: "",
       languages: "",
       city: "",
-      // img: "",
       email: "",
     }
-  }
 
+  }
   ngOnInit(): void {
     this.guides = this.http.get(this.allGuidesUrl)
       .subscribe((datas) => {
         this.allGuides = datas
       })
   }
-
+  uploadHandler(e) {
+    console.log("changed")
+    console.log(e.target.files[0])
+  }
   readonly allGuidesUrl = "http://localhost:8000/guides"
 
   deleteAguide(name) {
@@ -43,20 +43,12 @@ export class AdminComponent implements OnInit {
     })
   }
 
-  // createFormData(event) {
-  //   this.selectedFile = <File>event.target.files[0];
-  //   this.fd.append('file', this.selectedFile, this.selectedFile.name);
-
-  // }
-
-
   name = ""
   description = ""
   age = 0
   gender = ""
   languages = ""
   city = ""
-  // img = ""
   email = ""
 
   onSubmit() {
@@ -66,9 +58,7 @@ export class AdminComponent implements OnInit {
     this.posts.gender = this.gender
     this.posts.languages = this.languages
     this.posts.city = this.city
-    // this.posts.img = this.img
     this.posts.email = this.email
-    // console.log("FD", this.fd)
     this.http.post(this.allGuidesUrl + "/" + name, this.posts).subscribe(() => {
       this.ngOnInit()
     })

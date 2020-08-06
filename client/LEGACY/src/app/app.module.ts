@@ -1,4 +1,3 @@
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,13 +17,9 @@ import { AdminComponent } from './admin/admin.component';
     LoginComponent,
     SignUpComponent,
     MainComponent,
+    AdminComponent,
     UserComponent,
   ],
-
-
-
-@NgModule({
-  declarations: [AppComponent, LoginComponent, SignUpComponent, MainComponent, AdminComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

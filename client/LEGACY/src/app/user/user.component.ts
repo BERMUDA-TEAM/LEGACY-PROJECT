@@ -7,7 +7,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserComponent implements OnInit {
   constructor(private http: HttpClient) {
-    // this.getUsers();
   }
   allGuides: any = [];
 
@@ -17,11 +16,6 @@ export class UserComponent implements OnInit {
   getUsers() {
     return this.http.get('http://localhost:8000/guides').subscribe((datas) => {
       this.allGuides = datas;
-      // console.log(this.allGuides);
     });
   }
-  // showGuides() {
-  //   this.guideIn = !this.guideIn;
-
-  // }
 }
