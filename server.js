@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
-const multer = require("multer");
+// const multer = require("multer");
 const cors = require("cors");
 const app = express();
 
@@ -30,19 +30,36 @@ app.use("/uploads", express.static("uploads"));
 
 //////ALL GUIDE ROUTES///////
 // this is for adding a new guide //OK
-const storage = multer.diskStorage({
-  destination: (req, file, callBack) => {
-    callBack(null, DIR);
-  },
-  filename: (req, file, callBack) => {
-    const filename = file.originalname.toLowerCase().split(" ").join("-");
-    callBack(null, "-" + filename);
-  },
-});
+// const storage = multer.diskStorage({
+//   destination: (req, file, callBack) => {
+//     callBack(null, DIR);
+//   },
+//   filename: (req, file, callBack) => {
+//     const filename = file.originalname.toLowerCase().split(" ").join("-");
+//     callBack(null, "-" + filename);
+//   },
+// });
 
-const upload = multer({ storage: storage });
-app.post("/guides", upload.single("img"), (req, res) => {
-  const url = req.protocol + "://" + req.get("host");
+// const upload = multer({ storage: storage });
+// app.post("/guides", upload.single("img"), (req, res) => {
+//   const url = req.protocol + "://" + req.get("host");
+//   let newGuide = {
+//     name: req.body.name,
+//     description: req.body.description,
+//     age: req.body.age,
+//     gender: req.body.gender,
+//     languages: req.body.languages,
+//     city: req.body.city,
+//     img: url + "/uploads/" + req.file.filename,
+//     phone: req.body.number,
+//     email: req.body.email,
+//   };
+//   Guide.create(newGuide).then((guide) => {
+//     res.status(201).json(guide);
+//   });
+// });
+
+app.post("/guides", (req, res) => {
   let newGuide = {
     name: req.body.name,
     description: req.body.description,
@@ -50,7 +67,6 @@ app.post("/guides", upload.single("img"), (req, res) => {
     gender: req.body.gender,
     languages: req.body.languages,
     city: req.body.city,
-    img: url + "/uploads/" + req.file.filename,
     phone: req.body.number,
     email: req.body.email,
   };

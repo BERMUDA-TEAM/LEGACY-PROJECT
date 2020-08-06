@@ -1,0 +1,62 @@
+<div id="wrapper">
+    <div id="Profile" *ngFor="let oneGuide of allGuides">
+        <p>Name : {{oneGuide.name}}</p>
+        <p>Description : {{oneGuide.description}}</p>
+        <p>Age : {{oneGuide.age}}</p>
+        <p>Gender : {{oneGuide.gender}}</p>
+        <p>Languages : {{oneGuide.languages}}</p>
+        <p>City : {{oneGuide.city}}</p>
+        <img src={{oneGuide.img}} class="rounded mx-auto d-block">
+        <p>Mail : {{oneGuide.email}} </p>
+        <button (click)="deleteAguide(oneGuide.name)">Delete</button>
+        <!-- <button (click)="updateAguide(oneGuide.name , oneGuide.description)">Update</button> -->
+    </div>
+</div>
+
+<form>
+
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input [(ngModel)]="name" id="name" class="form-control" [ngModelOptions]="{standalone: true}">
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea [(ngModel)]="description" id="description" cols="30" rows="10"
+            [ngModelOptions]="{standalone: true}"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="age">Age</label>
+        <input [(ngModel)]="age" id="age" type="number" class="form-control" [ngModelOptions]="{standalone: true}">
+    </div>
+
+    <div class="form-group">
+        <label for="gender">Gender</label>
+        <input [(ngModel)]="gender" id="gender" type="text" class="form-control" [ngModelOptions]="{standalone: true}">
+    </div>
+
+    <div class="form-group">
+        <label for="languages">Languages</label>
+        <input [(ngModel)]="languages" id="languages" type="text" class="form-control"
+            [ngModelOptions]="{standalone: true}">
+    </div>
+
+    <div class="form-group">
+        <label for="city">City</label>
+        <input [(ngModel)]="city" id="city" type="text" class="form-control" [ngModelOptions]="{standalone: true}">
+    </div>
+    <!-- 
+    <div class="form-group">
+        <label for="img">Upload You Image</label>
+        <input (change)="createFormData($event)" [(ngModel)]="img" id="img" type="file" class="form-control"
+            [ngModelOptions]="{standalone: true}">
+    </div> -->
+
+    <div class="form-group">
+        <label for="email">E-Mail</label>
+        <input [(ngModel)]="email" id="email" type="email" class="form-control" [ngModelOptions]="{standalone: true}">
+    </div>
+
+    <button class="btn btn-primary" (click)="onSubmit()">Submit</button>
+</form>

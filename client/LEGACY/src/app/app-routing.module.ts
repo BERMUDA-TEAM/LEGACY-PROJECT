@@ -1,3 +1,4 @@
+import { AdminComponent } from './admin/admin.component';
 import { MainComponent } from './main/main.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
@@ -8,7 +9,8 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   { path: 'signin', pathMatch: 'full', component: LoginComponent },
   { path: 'signup', pathMatch: 'full', component: SignUpComponent },
-  { path: '', component: MainComponent }
+  { path: '', component: MainComponent },
+  { path: 'admin', component: AdminComponent }
 ];
 
 @NgModule({
