@@ -10,10 +10,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainComponent } from './main/main.component';
 import { AdminComponent } from './admin/admin.component';
+import { UserComponent } from './user/user.component';
 
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, SignUpComponent, MainComponent, AdminComponent],
+  declarations: [AppComponent, LoginComponent, SignUpComponent, MainComponent, AdminComponent, UserComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
