@@ -26,11 +26,9 @@ export class SignUpComponent implements OnInit {
         this.FirstName,
         this.LastName,
         this.Password
-      )
-      // .then(() => {
-      //   console.log('navigate');
-      //   this.router.navigate(['/login']);
-      // })
+      ).then(() => {
+        console.log('navigate');
+      })
       .catch(() => {
         console.log('error');
       });
