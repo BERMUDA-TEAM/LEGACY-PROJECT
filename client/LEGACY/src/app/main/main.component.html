@@ -8,13 +8,8 @@
 </nav> -->
 
 <nav class="navbar navbar-light bg-light">
-  <img src="./main-images/8fdeacd7-db59-40f1-a008-73f016db08e1_200x200.png" />
-  <a
-
-    class="btn btn-outline-success"
-    [routerLink]="'/signin'"
-    >SIGN IN</a
-  >
+  <h3 class="logo">LOCAL GUIDE</h3>
+  <a class="btn btn-outline-success" [routerLink]="'/signin'">SIGN IN</a>
   <a id="buttonLOG-IN " class="btn btn-outline-success" [routerLink]="'/signup'"
     >SIGN UP</a
   >
@@ -26,7 +21,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-9 mx-auto">
-        <h1 class="mb-5 " >
+        <h1 class="mb-5">
           WELCOME TO LOCAL GUIDE
         </h1>
       </div>
@@ -45,7 +40,12 @@
 <section class="showcase">
   <div class="container-fluid p-0">
     <div class="row no-gutters">
-      <div class="col-lg-6 order-lg-2 text-white showcase-img"></div>
+      <div
+        class="col-lg-6 order-lg-2 text-white showcase-img"
+        style="
+          background-image: url('https://images.unsplash.com/photo-1535190971825-f335138358c8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80')
+        "
+      ></div>
       <div class="col-lg-6 order-lg-1 my-auto showcase-text">
         <h2>SAHARA</h2>
         <p class="lead mb-0">
@@ -58,7 +58,10 @@
       </div>
     </div>
     <div class="row no-gutters">
-      <div class="col-lg-6 text-white showcase-img"></div>
+      <div class="col-lg-6 text-white showcase-img"
+      style="
+          background-image: url('https://static.thousandwonders.net/Great.Mosque.of.Kairouan.original.36032.jpg')
+        "></div>
       <div class="col-lg-6 my-auto showcase-text">
         <h2>KAIROUAN</h2>
         <p class="lead mb-0">
@@ -74,7 +77,9 @@
 
 <div class="jumbotron jumbotron-fluid">
   <div>
-    <h1 class="display-4 text-center"> <h2>“TAKE ONLY MEMORIES, LEAVE ONLY FOOTPRINTS”</h2></h1>
+    <h1 class="display-4 text-center">
+      <h2>“TAKE ONLY MEMORIES, LEAVE ONLY FOOTPRINTS”</h2>
+    </h1>
   </div>
 </div>
 

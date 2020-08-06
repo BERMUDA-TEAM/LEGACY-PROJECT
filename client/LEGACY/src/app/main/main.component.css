@@ -66,7 +66,7 @@ header.masthead h1 {
   box-shadow: 0px 5px 5px 0px #adb5bd;
 }
 
-.call-to-action {
+/* .call-to-action {
   position: relative;
   background-color: #343a40;
   background: url("https://images.unsplash.com/photo-1535190971825-f335138358c8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80")
@@ -84,7 +84,7 @@ header.masthead h1 {
   top: 0;
   left: 0;
   opacity: 0.3;
-}
+} */
 
 footer.footer {
   padding-top: 4rem;
@@ -97,4 +97,8 @@ footer.footer {
 
 .navbar-brand {
   margin-right: 850px;
+}
+
+.logo {
+  font-style: Candara;
 }
