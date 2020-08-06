@@ -122,6 +122,8 @@ app.put("/guides/:name", (req, res) => {
 //         res.json('POST REGISTER ROUTE')
 //     })
 
+
+//OMAR----CREATE A USER IF THAT THE EMAIL USED IS NOT ALREADY TAKED FROM ANOTHER USER AND HASH THE PASSWORD----OMAR\\
 app.post("/signUp", (req, res) => {
   let newUser = {
     userName: req.body.userName,
@@ -153,6 +155,7 @@ app.post("/signUp", (req, res) => {
     });
 });
 
+//OMAR----COMPARE HASHED PASSWORD WITH ENTRED PASSWORD AND IF ALL IS CORRECT GIVE A TOKE THAT AUTHENTICATE THE USER.----OMAR\\
 app.post("/LogIn", (req, res) => {
   console.log("mail FRONT", req.body.addressMail);
   console.log("not hashed password front", req.body.password);
@@ -174,32 +177,7 @@ app.post("/LogIn", (req, res) => {
   });
 });
 
-//   User.findOne({ addressMail: req.body.addressMail })
-//     .then((user) => {
-//       if (user) {
-//         if (bcrypt.compareSync(req.body.password, user.password)) {
-//           const payload = {
-//             addressMail: user.addressMail,
-//             userName: user.userName,
-//           };
-//           let token = jwt.sign(payload, process.env.SECRET_KEY, {
-//             expiresIn: 2020,
-//           });
-//           res.send(token);
-//         } else {
-//           res.json("WRONG PASSWORD");
-//         }
-//       } else {
-//         res.json("USER NOT FOUND PLEASE CREATE AN ACCOUNT FIRST");
-//       }
-//     })
-//     .catch((err) => {
-//       res.send("ERROOOOR");
-//     });
-// });
-
-//listening th server
-
+//LISTEN PORT FOR EXRESS APP
 app.listen(PORT, (err) => {
   if (err) {
     console.log("Error : ", err);
