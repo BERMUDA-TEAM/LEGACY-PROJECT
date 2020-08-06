@@ -1,16 +1,16 @@
 <!-- Navigation -->
 <!-- <nav class="navbar navbar-light bg-light static-top">
   <div class="container">
-    <a class="navbar-brand mb-0 h1">LOGO</a>
-    <a id="buttonSIGN-IN " class="btn btn-success ml-300">SIGN-IN</a>
-    <a id="buttonLOG-IN " class="btn btn-success ml-300">LOG-IN</a>
+    <a class="navbar-brand">LOGO</a>
+    <a class="btn btn-primary" [routerLink]="'/signin'">Sign In</a>
+    <a class="btn btn-primary" [routerLink]="'/signup'">Sign Up</a>
   </div>
 </nav> -->
 
 <nav class="navbar navbar-light bg-light">
   <img src="./main-images/8fdeacd7-db59-40f1-a008-73f016db08e1_200x200.png" />
-  <a id="buttonSIGN-IN " class="btn btn-outline-success">SIGN-IN</a>
-  <a id="buttonLOG-IN " class="btn btn-outline-success">LOG-IN</a>
+  <a id="buttonSIGN-IN " class="btn btn-outline-success" [routerLink]="'/signin'">SIGN IN</a>
+  <a id="buttonLOG-IN " class="btn btn-outline-success" [routerLink]="'/signup'">SIGN UP</a>
 </nav>
 
 <!-- Masthead -->
@@ -39,12 +39,8 @@
 <section class="showcase">
   <div class="container-fluid p-0">
     <div class="row no-gutters">
-      <div
-        class="col-lg-6 order-lg-2 text-white showcase-img"
-        style="
-          background-image: url('https://images.pexels.com/photos/1123567/pexels-photo-1123567.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
-        "
-      ></div>
+      <div class="col-lg-6 order-lg-2 text-white showcase-img">
+      </div>
       <div class="col-lg-6 order-lg-1 my-auto showcase-text">
         <h2>SAHARA</h2>
         <p class="lead mb-0">
@@ -57,19 +53,24 @@
       </div>
     </div>
     <div class="row no-gutters">
-      <div
-        class="col-lg-6 text-white showcase-img"
-        style="
-          background-image: url('https://kairouan.tunisia-infos.com/wp-content/grand-media/image/Great_Mosque_of_Kairouan.jpg');
-        "
-      ></div>
+      <div class="col-lg-6 text-white showcase-img"></div>
       <div class="col-lg-6 my-auto showcase-text">
         <h2>KAIROUAN</h2>
         <p class="lead mb-0">
-          Located in the centre of Tunisia in a plain at an almost equal
-          distance from the sea and the mountain, Kairouan is the most ancient
-          Arabo-Muslim base of the Maghreb (670 AD) and one of its principal
-          holy cities.
+          des 2
+        </p>
+      </div>
+    </div>
+    <div class="row no-gutters">
+      <div class="col-lg-6 order-lg-2 text-white showcase-img">
+      </div>
+      <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+        <h2>Easy to Use &amp; Customize</h2>
+        <p class="lead mb-0">
+          Landing Page is just HTML and CSS with a splash of SCSS for users who
+          demand some deeper customization options. Out of the box, just add
+          your content and images, and your new landing page will be ready to
+          go!
         </p>
       </div>
     </div>
@@ -83,10 +84,8 @@
     <div class="row">
       <div class="col-lg-4">
         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-          <img
-            class="img-fluid rounded-circle mb-3"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSapohvygVlUwEjxIhaAHP86EGUJXf3thCbSQ&usqp=CAU"
-          />
+          <img class="img-fluid rounded-circle mb-3"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSapohvygVlUwEjxIhaAHP86EGUJXf3thCbSQ&usqp=CAU" />
           <h5>Margaret E.</h5>
           <p class="font-weight-light mb-0">
             "Yes I would , it was a very good adventure well organised and
@@ -96,11 +95,9 @@
       </div>
       <div class="col-lg-4">
         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-          <img
-            class="img-fluid rounded-circle mb-3"
+          <img class="img-fluid rounded-circle mb-3"
             src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-            alt=""
-          />
+            alt="" />
           <h5>Fred S.</h5>
           <p class="font-weight-light mb-0">
             "We will recommend LOCAL GUIDE to my friends in UK. Many thanks for
@@ -110,11 +107,8 @@
       </div>
       <div class="col-lg-4">
         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-          <img
-            class="img-fluid rounded-circle mb-3"
-            src="https://i.pinimg.com/originals/8e/0f/70/8e0f709551d0bc63edd2aac7cb129e19.jpg"
-            alt=""
-          />
+          <img class="img-fluid rounded-circle mb-3"
+            src="https://i.pinimg.com/originals/8e/0f/70/8e0f709551d0bc63edd2aac7cb129e19.jpg" alt="" />
           <h5>Sarah W.</h5>
           <p class="font-weight-light mb-0">
             " Yes, it was a very memorable trip and one that we would suggest to

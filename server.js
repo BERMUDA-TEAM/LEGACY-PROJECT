@@ -122,16 +122,7 @@ app.put("/guides/:name", (req, res) => {
 //         res.json('POST REGISTER ROUTE')
 //     })
 
-//listening th server
 
-app.listen(PORT, (err) => {
-  if (err) {
-    console.log("Error : ", err);
-  }
-  console.log(`Local Guide is running on http://localhost:${PORT}`);
-});
-
-////////////////////////////////////////////////////AUTHENTICATION---OMAR/////////////////////////////////////////////////////////
 
 app.post("/signUp", (req, res) => {
   let newUser = {
@@ -188,3 +179,13 @@ app.post("/LogIn", (req, res) => {
       res.send("ERROOOOR");
     });
 });
+
+//listening th server
+
+app.listen(PORT, (err) => {
+  if (err) {
+    console.log("Error : ", err);
+  }
+  console.log(`Local Guide is running on http://localhost:${PORT}`);
+});
+
