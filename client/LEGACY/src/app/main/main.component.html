@@ -1,16 +1,18 @@
 <!-- Navigation -->
 <!-- <nav class="navbar navbar-light bg-light static-top">
   <div class="container">
-    <a class="navbar-brand mb-0 h1">LOGO</a>
-    <a id="buttonSIGN-IN " class="btn btn-success ml-300">SIGN-IN</a>
-    <a id="buttonLOG-IN " class="btn btn-success ml-300">LOG-IN</a>
+    <a class="navbar-brand">LOGO</a>
+    <a class="btn btn-primary" [routerLink]="'/signin'">Sign In</a>
+    <a class="btn btn-primary" [routerLink]="'/signup'">Sign Up</a>
   </div>
 </nav> -->
 
 <nav class="navbar navbar-light bg-light">
-  <img src="./main-images/8fdeacd7-db59-40f1-a008-73f016db08e1_200x200.png" />
-  <a id="buttonSIGN-IN " class="btn btn-outline-success">SIGN-IN</a>
-  <a id="buttonLOG-IN " class="btn btn-outline-success">LOG-IN</a>
+  <h3 class="logo">LOCAL GUIDE</h3>
+  <a class="btn btn-outline-success" [routerLink]="'/signin'">SIGN IN</a>
+  <a id="buttonLOG-IN " class="btn btn-outline-success" [routerLink]="'/signup'"
+    >SIGN UP</a
+  >
 </nav>
 
 <!-- Masthead -->
@@ -22,7 +24,6 @@
         <h1 class="mb-5">
           WELCOME TO LOCAL GUIDE
         </h1>
-        <h2>“TAKE ONLY MEMORIES, LEAVE ONLY FOOTPRINTS”</h2>
       </div>
       <div class="col-md-10 col-lg-8 col-xl-7 mx-auto"></div>
     </div>
@@ -31,7 +32,7 @@
 
 <div class="jumbotron jumbotron-fluid">
   <div>
-    <h1 class="display-4 text-center">MOST VISITED PLACES OF TUNISIA</h1>
+    <h1 class="display-4 text-center">MOST VISITED PLACES IN TUNISIA</h1>
   </div>
 </div>
 
@@ -42,7 +43,7 @@
       <div
         class="col-lg-6 order-lg-2 text-white showcase-img"
         style="
-          background-image: url('https://images.pexels.com/photos/1123567/pexels-photo-1123567.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+          background-image: url('https://images.unsplash.com/photo-1535190971825-f335138358c8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80')
         "
       ></div>
       <div class="col-lg-6 order-lg-1 my-auto showcase-text">
@@ -57,12 +58,10 @@
       </div>
     </div>
     <div class="row no-gutters">
-      <div
-        class="col-lg-6 text-white showcase-img"
-        style="
-          background-image: url('https://kairouan.tunisia-infos.com/wp-content/grand-media/image/Great_Mosque_of_Kairouan.jpg');
-        "
-      ></div>
+      <div class="col-lg-6 text-white showcase-img"
+      style="
+          background-image: url('https://static.thousandwonders.net/Great.Mosque.of.Kairouan.original.36032.jpg')
+        "></div>
       <div class="col-lg-6 my-auto showcase-text">
         <h2>KAIROUAN</h2>
         <p class="lead mb-0">
@@ -75,6 +74,14 @@
     </div>
   </div>
 </section>
+
+<div class="jumbotron jumbotron-fluid">
+  <div>
+    <h1 class="display-4 text-center">
+      <h2>“TAKE ONLY MEMORIES, LEAVE ONLY FOOTPRINTS”</h2>
+    </h1>
+  </div>
+</div>
 
 <!-- Testimonials -->
 <section class="testimonials text-center bg-light">

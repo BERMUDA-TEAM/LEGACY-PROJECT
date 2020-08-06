@@ -36,16 +36,6 @@ header.masthead h1 {
   font-size: 2rem;
 }
 
-/* @media (min-width: 768px) {
-  header.masthead {
-    padding-top: 12rem;
-    padding-bottom: 12rem;
-  }
-  header.masthead h1 {
-    font-size: 3rem;
-  }
-} */
-
 .showcase .showcase-text {
   padding: 3rem;
   margin-bottom: 30px;
@@ -76,10 +66,10 @@ header.masthead h1 {
   box-shadow: 0px 5px 5px 0px #adb5bd;
 }
 
-.call-to-action {
+/* .call-to-action {
   position: relative;
   background-color: #343a40;
-  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcScsJ3NN9Z9baCVkJ3mBVRBnB3pIvZJPiwwFg&usqp=CAU")
+  background: url("https://images.unsplash.com/photo-1535190971825-f335138358c8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80")
     no-repeat center center;
   background-size: cover;
   padding-top: 7rem;
@@ -94,19 +84,11 @@ header.masthead h1 {
   top: 0;
   left: 0;
   opacity: 0.3;
-}
+} */
 
 footer.footer {
   padding-top: 4rem;
   padding-bottom: 4rem;
-}
-
-#buttonSIGN-IN {
-  margin-right: 800px;
-}
-
-#buttonLOGIN-2 {
-  margin-left: 250px;
 }
 
 .jumbotron {
@@ -115,4 +97,8 @@ footer.footer {
 
 .navbar-brand {
   margin-right: 850px;
+}
+
+.logo {
+  font-style: Candara;
 }
