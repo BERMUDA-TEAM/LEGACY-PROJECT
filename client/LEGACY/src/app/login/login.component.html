@@ -6,43 +6,20 @@
           Account Login
         </span>
 
-        <div
-          class="wrap-input100 rs1-wrap-input100 validate-input m-b-20"
-          data-validate="Type user name"
-        >
-          <input
-            id="adress-mail"
-            class="input100 form-control"
-            type="text"
-            name="adress-mail"
-            placeholder="Adress Mail"
-            [(ngModel)]="AdressMail"
-            [ngModelOptions]="{ standalone: true }"
-          />
+        <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+          <input id="adress-mail" class="input100 form-control" type="text" name="adress-mail" placeholder="Adress Mail"
+            [(ngModel)]="AdressMail" [ngModelOptions]="{ standalone: true }" />
           <span class="focus-input100"></span>
         </div>
 
-        <div
-          class="wrap-input100 rs2-wrap-input100 validate-input m-b-20"
-          data-validate="Type password"
-        >
-          <input
-            class="input100 form-control"
-            type="password"
-            name="pass"
-            placeholder="Password"
-            [(ngModel)]="Password"
-            [ngModelOptions]="{ standalone: true }"
-          />
+        <div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
+          <input class="input100 form-control" type="password" name="pass" placeholder="Password" [(ngModel)]="Password"
+            [ngModelOptions]="{ standalone: true }" />
           <span class="focus-input100"></span>
         </div>
 
         <div class="container-login100-form-btn">
-          <button
-            [routerLink]="''"
-            class="login100-form-btn"
-            (click)="onLogIn()"
-          >
+          <button [routerLink]="'/user'" class="login100-form-btn" (click)="onLogIn()">
             Sign in
           </button>
         </div>

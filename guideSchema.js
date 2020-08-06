@@ -8,7 +8,6 @@ let guideSchema = new mongoose.Schema({
     gender: String,
     languages: [String],
     city: String,
-    // img: { type: String },
     phone: Number,
     email: String
 })
