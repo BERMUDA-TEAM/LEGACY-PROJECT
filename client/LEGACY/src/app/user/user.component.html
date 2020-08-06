@@ -1,0 +1,23 @@
+<nav class="navbar navbar-light bg-light">
+  <span class="navbar-brand mb-0 h1">
+    Discover more with our guides, you will love the place!</span
+  >
+</nav>
+
+<button class="btn btn-danger" (click)="getUsers()">All guides</button>
+<!-- <app-list *ngIf="guideIn"></app-list> -->
+<!-- <div *ngIf="guideIn"> -->
+<div id="wrapper">
+  <span *ngFor="let guide of allGuides">
+    <div>
+      <div id="Profile">
+        name : {{ guide.name }} <br />
+        age : {{ guide.age }}<br />
+        gender :{{ guide.gender }}<br />
+        <button>AddComment</button><br />
+      </div>
+    </div>
+  </span>
+</div>
+<!--   
+</div> -->

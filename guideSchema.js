@@ -8,9 +8,10 @@ let guideSchema = new mongoose.Schema({
     gender: String,
     languages: [String],
     city: String,
-    img: { type: String },
+    // img: { type: String },
     phone: Number,
-    email: String
+    email: String,
+    review:String
 })
 
 const Guide = new mongoose.model('Guide', guideSchema)

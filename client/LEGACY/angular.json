@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "LEGACY"
+    }
+  },
+  "defaultProject": "LEGACY",
+  "cli": {
+    "analytics": false
+  }
 }
