@@ -1,5 +1,8 @@
 <nav class="navbar navbar-light bg-light">
     <h3 class="logo" [routerLink]="'/'">LOCAL GUIDE</h3>
+    <form action="/action_page.php">
+        <input type="text" placeholder="Search.." name="search" [(ngModel)]="term" (ngModelChange)="changeGuides()">
+    </form>
     <a class="btn btn-outline-success" [routerLink]="'/'">SIGN OUT</a>
 </nav>
 <br>
@@ -12,17 +15,17 @@
         <p>Gender : {{oneGuide.gender}}</p>
         <p>Languages : {{oneGuide.languages}}</p>
         <p>City : {{oneGuide.city}}</p>
-
         <img src="../../assets/img/{{oneGuide.fileName}}" class="rounded mx-auto d-block">
         <p>Mail : {{oneGuide.email}} </p>
         <button (click)="deleteAguide(oneGuide.name)">Delete</button>
-        <!-- <button (click)="updateAguide(oneGuide.name , oneGuide.description)">Update</button> -->
+        <!-- <button (click)="updateAguide()">Update</button> -->
+        <form *ngIf="show">
+        </form>
     </div>
 </div>
 <br>
 <br>
-
-<form class="container">
+<form class=" container" *ngIf="!show">
     <div>
         <label for="name">Name</label>
         <input [(ngModel)]="name" id="name" class="form-control" [ngModelOptions]="{standalone: true}">

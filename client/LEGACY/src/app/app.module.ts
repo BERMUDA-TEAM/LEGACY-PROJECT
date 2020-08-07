@@ -13,6 +13,7 @@ import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
 
 
+
 @NgModule({
   declarations: [AppComponent, LoginComponent, SignUpComponent, MainComponent, AdminComponent, UserComponent],
   imports: [

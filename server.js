@@ -18,7 +18,6 @@ const User = require("./UserSchema.js");
 //MIDDLEWARES.
 app.use(bodyParser.json());
 app.use(cors());
-
 ////////////////////////ROUTES//////////////////////////////////////
 const storage = multer.diskStorage({
   destination: "./client/LEGACY/src/assets/img",
@@ -34,7 +33,6 @@ const fileFilter = (req, file, cb) => {
   }
 };
 const upload = multer({ storage: storage, fileFilter: fileFilter });
-
 ////////////////////////////
 //  CRTEATE a Guide
 app.post("/guides", upload.single("imageFile"), (req, res) => {
@@ -53,7 +51,6 @@ app.post("/guides", upload.single("imageFile"), (req, res) => {
     res.status(201).json(guide)
   });
 });
-
 //this is for getting all guides // OK
 app.get("/guides", (req, res) => {
   Guide.find({}, (err, guides) => {
@@ -63,11 +60,15 @@ app.get("/guides", (req, res) => {
     }
   });
 });
+app.post("/searchGuides", (req, res) => {
 
-// app.use('/static', express.static('./src/assets/img'))
-
-
-
+  Guide.find({ "name": new RegExp(req.body.name, 'i') }, (err, guides) => {
+    if (err) res.json("can not find this guide at @ /guides");
+    else {
+      res.status(200).json(guides);
+    }
+  });
+});
 //this is for deleting one guide // OK
 app.delete("/guides/", (req, res) => {
   Guide.findOneAndRemove({ name: req.query.name }, (err, guide) => {
@@ -117,7 +118,6 @@ app.post("/signUp", (req, res) => {
       res.send("ERROOOOR");
     });
 });
-
 //OMAR----COMPARE HASHED PASSWORD WITH ENTRED PASSWORD AND IF ALL IS CORRECT GIVE A TOKE THAT AUTHENTICATE THE USER.----OMAR\\
 app.post("/LogIn", (req, res) => {
   User.findOne({ addressMail: req.body.addressMail }, (error, user) => {
@@ -136,7 +136,6 @@ app.post("/LogIn", (req, res) => {
     }
   });
 });
-
 //LISTEN PORT FOR EXRESS APP
 app.listen(PORT, (err) => {
   if (err) {
