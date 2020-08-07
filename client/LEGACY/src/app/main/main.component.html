@@ -1,22 +1,9 @@
-<!-- Navigation -->
-<!-- <nav class="navbar navbar-light bg-light static-top">
-  <div class="container">
-    <a class="navbar-brand">LOGO</a>
-    <a class="btn btn-primary" [routerLink]="'/signin'">Sign In</a>
-    <a class="btn btn-primary" [routerLink]="'/signup'">Sign Up</a>
-  </div>
-</nav> -->
-
 <nav class="navbar navbar-light bg-light">
   <h3 class="logo">LOCAL GUIDE</h3>
-  <button class="btn btn-outline-success" [routerLink]="'/signin'">
+  <button id="signin" class="btn btn-outline-success" [routerLink]="'/signin'">
     SIGN IN
   </button>
-  <button
-    id="buttonLOG-IN "
-    class="btn btn-outline-success"
-    [routerLink]="'/signup'"
-  >
+  <button id="signup" class="btn btn-outline-success" [routerLink]="'/signup'">
     SIGN UP
   </button>
 </nav>
@@ -27,7 +14,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-9 mx-auto">
-        <h1 class="mb-5">
+        <h1 style="font-size: 50px;">
           WELCOME TO LOCAL GUIDE
         </h1>
       </div>
