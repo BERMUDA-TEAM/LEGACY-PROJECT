@@ -13,3 +13,25 @@
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 1em;
 }
+
+#searchBar {
+  position:absolute;
+  
+
+  left:240;
+  right:250px;
+  height: 300px;
+  width: 450px;
+}
+
+#buttonSelect {
+  position:absolute;
+  left:140;
+  right:550px;
+
+}
+#buttonAll {
+  position:absolute;
+  left:140;
+  right:604px;
+}

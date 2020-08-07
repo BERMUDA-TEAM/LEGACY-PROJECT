@@ -19,7 +19,7 @@ const db = require("./database.js");
 //DATABASE COLLECTIONS.
 const Guide = require("./guideSchema.js");
 const User = require("./UserSchema");
-
+const Review = require("./reviewSchema");
 //MIDDLEWARES.
 app.use(bodyParser.json());
 app.use(cors());
@@ -123,12 +123,29 @@ app.post("/LogIn", (req, res) => {
   });
 });
 
-
-
 //LISTEN PORT FOR EXRESS APP
 app.listen(PORT, (err) => {
   if (err) {
     console.log("Error : ", err);
   }
   console.log(`Local Guide is running on http://localhost:${PORT}`);
+});
+
+app.get("/one", (req, res) => {
+  Guide.find({ gender: req.query.gender, city: req.query.city }).then(
+    (result) => {
+      res.send(result);
+    }
+  );
+});
+// Create a review in dataBase
+
+app.post("/reviews", (req, res) => {
+  console.log(req.body.review);
+  let newReview = {
+    review: req.body.review,
+  };
+  Review.create(newReview).then((review) => {
+    res.status(201).json(review);
+  });
 });

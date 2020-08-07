@@ -6,17 +6,17 @@ import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-
 const routes: Routes = [
   { path: 'signin', pathMatch: 'full', component: LoginComponent },
   { path: 'signup', pathMatch: 'full', component: SignUpComponent },
   { path: '', component: MainComponent },
   { path: 'admin', component: AdminComponent },
-  { path: 'user', component: UserComponent }
+  { path: 'user', component: UserComponent },
+  { path: 'mainpage', component: MainComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,18 +1,73 @@
 <nav class="navbar navbar-light bg-light">
+  <h3 class="logo">LOCAL GUIDE</h3>
+  <a class="btn btn-outline-success" [routerLink]="'/mainpage'">Main Page</a>
+  <a id="buttonLOG-IN " class="btn btn-outline-success" [routerLink]="'/signin'"
+    >Log Out</a
+  >
+</nav>
+
+<nav class="navbar navbar-light bg-light">
   <span class="navbar-brand mb-0 h1">
     Discover more with our guides, you will love the place!</span
   >
 </nav>
-<button class="btn btn-danger" (click)="getUsers()">All guides</button>
+
+<div id="searchBar">
+  <select class="form-control">
+    <option defaultValue>Cities</option>
+    <option value="Beja">Beja</option>
+    <option value="Bizerte">Bizerte</option>
+    <option value="Gabes">Gabes</option>
+    <option value="Gafsa">Gafsa</option>
+    <option value="Jendouba">Jendouba</option>
+    <option value="Kairawen">Kairawen</option>
+    <option value="Kasserine">Kasserine</option>
+    <option value="Kebili">Kebili</option>
+    <option value="Kef">Kef</option>
+    <option value="Mahdia">Mahdia</option>
+    <option value="Medenin">Medenin</option>
+    <option value="Monastir">Monastir</option>
+    <option value="Nabel">Nabel</option>
+    <option value="Sfax">Sfax</option>
+    <option value="Siliana">Siliana</option>
+    <option value="SidiBouzid">SidiBouzid</option>
+    <option value="Sousse">Sousse</option>
+    <option value="Tataouin">Tataouin</option>
+    <option value="Tozeur">Tozeur</option>
+    <option value="Tunis">Tunis</option>
+    <option value="Zaghwan">Zaghwan</option>
+  </select>
+
+  <select class="form-control">
+    <option defaultValue>Languages</option>
+    <option value="Arabic">Arabic</option>
+    <option value="Chinese">Chinese</option>
+    <option value="English">English</option>
+    <option value="French">French</option>
+    <option value="German">German</option>
+    <option value="Italian">Italian</option>
+    <option value="Portuguese">Portuguese</option>
+    <option value="Russian">Russian</option>
+    <option value="Spanish">Spanish</option>
+  </select>
+
+  <select class="form-control">
+    <option defaultValue>Gender</option>
+    <option value="Female">Female</option>
+    <option value="Male">Male</option>
+  </select>
+</div>
+<br /><br /><br /><br /><br /><br />
+<button class="btn btn-danger" id="buttonSelect">Select your guide</button>
+<br />
+<br />
+
+<button class="btn btn-danger" id="buttonAll" (click)="getUsers()">
+  All guides
+</button>
+<br /><br /><br />
 <div id="wrapper">
-  <span *ngFor="let guide of allGuides">
-    <div>
-      <div id="Profile">
-        name : {{ guide.name }} <br />
-        age : {{ guide.age }}<br />
-        gender :{{ guide.gender }}<br />
-        <button>AddComment</button><br />
-      </div>
-    </div>
-  </span>
+<span *ngFor="let guide of allGuides">
+  <app-guide [guide]="guide"></app-guide
+></span>
 </div>

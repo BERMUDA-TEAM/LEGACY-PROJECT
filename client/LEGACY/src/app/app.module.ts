@@ -10,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainComponent } from './main/main.component';
 import { UserComponent } from './user/user.component';
 import { AdminComponent } from './admin/admin.component';
+import { GuideComponent } from './guide/guide.component';
+
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { AdminComponent } from './admin/admin.component';
     MainComponent,
     AdminComponent,
     UserComponent,
+    GuideComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,7 @@ import { AdminComponent } from './admin/admin.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

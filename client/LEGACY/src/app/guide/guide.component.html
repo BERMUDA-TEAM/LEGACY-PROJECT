@@ -1,0 +1,32 @@
+<div id="wrapper">
+  <div>
+    <div id="Profile">
+      name : {{ guide.name }} <br />
+      age : {{ guide.age }}<br />
+      gender :{{ guide.gender }}<br />
+      <br />description:{{ guide.description }}<br />
+      <br />email:{{ guide.email }}<br />
+
+      <br />
+      <div *ngIf="sendType">
+        <textarea *ngIf="reviewType" [(ngModel)]="inputReview"></textarea>
+        <br />
+        <button
+          *ngIf="reviewType"
+          class="btn btn-warning"
+          (click)="addReview()"
+        >
+          Send
+        </button>
+        <button class="btn btn-success" (click)="reviewIn()">
+          Add review
+        </button>
+
+        <br />
+      </div>
+      <div *ngIf="!sendType">
+        <p>{{ data.review }}</p>
+      </div>
+    </div>
+  </div>
+</div>

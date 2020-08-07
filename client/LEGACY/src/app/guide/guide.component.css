@@ -1,0 +1,47 @@
+#searchBar {
+    position:absolute;
+    
+  
+    left:240;
+    right:250px;
+    height: 300px;
+    width: 450px;
+  }
+  
+  #buttonSelect {
+    position:absolute;
+    left:140;
+    right:550px;
+  
+  }
+  #buttonAll {
+    position:absolute;
+    left:140;
+    right:604px;
+  }
+  #Profile {
+    text-align: center;
+    height: 300px;
+    width: 290px;
+    border-radius: 5%;
+    border-color: bisque;
+    border-bottom-color: bisque;
+    border-style: solid;
+    border-width: 5px;
+  }
+  #wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1em;
+  }
+  
+  #searchBar {
+    position:absolute;
+    
+  
+    left:240;
+    right:250px;
+    height: 300px;
+    width: 450px;
+  }
+  
