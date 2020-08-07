@@ -5,6 +5,5 @@ export interface Guides {
     gender: string,
     languages: any,
     city: string,
-    // img: any,
     email: string
 }

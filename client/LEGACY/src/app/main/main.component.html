@@ -1,18 +1,11 @@
-<!-- Navigation -->
-<!-- <nav class="navbar navbar-light bg-light static-top">
-  <div class="container">
-    <a class="navbar-brand">LOGO</a>
-    <a class="btn btn-primary" [routerLink]="'/signin'">Sign In</a>
-    <a class="btn btn-primary" [routerLink]="'/signup'">Sign Up</a>
-  </div>
-</nav> -->
-
 <nav class="navbar navbar-light bg-light">
   <h3 class="logo">LOCAL GUIDE</h3>
-  <a class="btn btn-outline-success" [routerLink]="'/signin'">SIGN IN</a>
-  <a id="buttonLOG-IN " class="btn btn-outline-success" [routerLink]="'/signup'"
-    >SIGN UP</a
-  >
+  <button id="signin" class="btn btn-outline-success" [routerLink]="'/signin'">
+    SIGN IN
+  </button>
+  <button id="signup" class="btn btn-outline-success" [routerLink]="'/signup'">
+    SIGN UP
+  </button>
 </nav>
 
 <!-- Masthead -->
@@ -21,7 +14,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-9 mx-auto">
-        <h1 class="mb-5">
+        <h1 style="font-size: 50px;">
           WELCOME TO LOCAL GUIDE
         </h1>
       </div>
@@ -43,7 +36,7 @@
       <div
         class="col-lg-6 order-lg-2 text-white showcase-img"
         style="
-          background-image: url('https://images.unsplash.com/photo-1535190971825-f335138358c8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80')
+          background-image: url('https://images.unsplash.com/photo-1535190971825-f335138358c8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80');
         "
       ></div>
       <div class="col-lg-6 order-lg-1 my-auto showcase-text">
@@ -58,10 +51,12 @@
       </div>
     </div>
     <div class="row no-gutters">
-      <div class="col-lg-6 text-white showcase-img"
-      style="
-          background-image: url('https://static.thousandwonders.net/Great.Mosque.of.Kairouan.original.36032.jpg')
-        "></div>
+      <div
+        class="col-lg-6 text-white showcase-img"
+        style="
+          background-image: url('https://static.thousandwonders.net/Great.Mosque.of.Kairouan.original.36032.jpg');
+        "
+      ></div>
       <div class="col-lg-6 my-auto showcase-text">
         <h2>KAIROUAN</h2>
         <p class="lead mb-0">

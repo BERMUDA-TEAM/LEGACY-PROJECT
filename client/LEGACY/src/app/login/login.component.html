@@ -38,7 +38,11 @@
         </div>
 
         <div class="container-login100-form-btn">
-          <button class="login100-form-btn" (click)="onLogIn()">
+          <button
+            [routerLink]="'/user'"
+            class="login100-form-btn"
+            (click)="onLogIn()"
+          >
             Sign in
           </button>
         </div>
@@ -52,7 +56,12 @@
           </a>
         </div>
       </form>
-      <div class="login100-more"></div>
+      <div
+        class="login100-more"
+        style="
+          background-image: url('https://cdn.civitatis.com/tunez/tunez/galeria/panoramica-sidi-bou-said.jpg');
+        "
+      ></div>
     </div>
   </div>
 </div>
