@@ -28,6 +28,8 @@
         >
           <input
             id="adress-mail"
+            required
+            minlength="4"
             class="input100 form-control"
             type="text"
             name="adress-mail"
@@ -37,7 +39,6 @@
           />
           <span class="focus-input100"></span>
         </div>
-
         <div
           class="wrap-input100 rs1-wrap-input100 validate-input m-b-20"
           data-validate="Type user name"
@@ -73,6 +74,7 @@
         <div
           class="wrap-input100 rs1-wrap-input100 validate-input m-b-20"
           data-validate="Type password"
+          style="width: 480px;"
         >
           <input
             class="input100 form-control"
@@ -86,11 +88,7 @@
         </div>
 
         <div class="container-login100-form-btn">
-          <button
-            [routerLink]="''"
-            class="login100-form-btn"
-            (click)="onSignUp()"
-          >
+          <button class="login100-form-btn" (click)="onSignUp()">
             Sign Up
           </button>
         </div>
@@ -106,9 +104,12 @@
         </div>
       </form>
 
-      <div class="login100-more" style="
-      background-image: url('https://carthagemagazine.com/wp-content/uploads/2020/04/Douz-Glamping-Under-the-Tunisian-Stars.jpg');
-    "></div>
+      <div
+        class="login100-more"
+        style="
+          background-image: url('https://carthagemagazine.com/wp-content/uploads/2020/04/Douz-Glamping-Under-the-Tunisian-Stars.jpg');
+        "
+      ></div>
     </div>
   </div>
 </div>
