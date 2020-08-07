@@ -23,18 +23,15 @@ export class AdminComponent implements OnInit {
       city: "",
       email: "",
     }
-
   }
+
   ngOnInit(): void {
     this.guides = this.http.get(this.allGuidesUrl)
       .subscribe((datas) => {
         this.allGuides = datas
       })
   }
-  uploadHandler(e) {
-    console.log("changed")
-    console.log(e.target.files[0])
-  }
+
   readonly allGuidesUrl = "http://localhost:8000/guides"
 
   deleteAguide(name) {

@@ -6,27 +6,69 @@ const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
+const multer = require('multer')
+const DIR = './uploads'
 
 //PORT.
 const PORT = 8000;
-
-//MULTER PHOTO STORAGE.
-const DIR = "./uploads/";
-
 //DATABASE CONNECTION.
 const db = require("./database.js");
-
 //DATABASE COLLECTIONS.
 const Guide = require("./guideSchema.js");
-const User = require("./UserSchema");
-
+const User = require("./UserSchema.js");
+const File = require("./fileSchema.js")
 //MIDDLEWARES.
 app.use(bodyParser.json());
 app.use(cors());
-
+app.use('/uploads', express.static('uploads'))
 ////////////////////////ROUTES//////////////////////////////////////
-//CRTEATE a Guide
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, DIR);
+  },
+  filename: (req, file, cb) => {
+    const fileName = file.originalname.toLowerCase().split(' ').join('-');
+    cb(null, '-' + fileName)
+  }
+})
+
+var upload = multer({
+  storage: storage,
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
+      cb(null, true);
+    } else {
+      cb(null, false);
+      return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
+    }
+  }
+})
+
+
+
+app.post("/file", upload.single('file'), (req, res, next) => {
+  const url = req.protocol + '://' + req.get('host')
+  const imgs = {
+    file: url + '/uploads/' + req.file.filename
+  }
+  File.create(imgs).then((img) => {
+    res.send(img);
+  });
+});
+
+app.get('/file', (req, res) => {
+  File.find({}, (err, docs) => {
+    res.send(docs)
+  });
+})
+
+
+
+////////////////////////////
+//  CRTEATE a Guide
 app.post("/guides", (req, res) => {
+  const url = req.protocol + '://' + req.get('host')
   let newGuide = {
     name: req.body.name,
     description: req.body.description,
