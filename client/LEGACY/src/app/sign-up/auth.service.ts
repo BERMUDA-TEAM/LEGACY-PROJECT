@@ -24,14 +24,16 @@ export class AuthService {
           lastName: lastName,
           password: password,
         })
-        .subscribe(() => {
-          console.log('resolved');
-          resolve()
-        },
-        (error) => {
-          console.log('reject')
-          reject(error)
-        });
+        .subscribe(
+          () => {
+            console.log('resolved');
+            resolve();
+          },
+          (error) => {
+            console.log('reject');
+            reject(error);
+          }
+        );
     });
   }
 }
