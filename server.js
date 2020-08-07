@@ -81,7 +81,7 @@ app.post("/signUp", (req, res) => {
     lastName: req.body.lastName,
     password: req.body.password,
   };
-
+  console.log(newUser);
   User.findOne({ addressMail: req.body.addressMail })
     .then((user) => {
       if (!user) {
@@ -92,7 +92,7 @@ app.post("/signUp", (req, res) => {
               res.json(user);
             })
             .catch((err) => {
-              res.send(err);
+              res.status(404).send(err);
             });
         });
       } else {
