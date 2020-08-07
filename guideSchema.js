@@ -4,12 +4,13 @@ const mongoose = require('mongoose')
 let guideSchema = new mongoose.Schema({
     name: String,
     description: String,
-    age: Number,
+    age: String,
     gender: String,
     languages: [String],
     city: String,
-    phone: Number,
-    email: String
+    phone: String,
+    email: String,
+    fileName: { type: String },
 })
 
 const Guide = new mongoose.model('Guide', guideSchema)

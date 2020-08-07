@@ -1,9 +1,9 @@
 export interface Guides {
     name: string,
     description: string,
-    age: number,
+    age: string,
     gender: string,
-    languages: any,
+    languages: string,
     city: string,
     email: string
 }

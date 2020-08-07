@@ -6,9 +6,8 @@ const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-const multer = require('multer')
-const DIR = './uploads'
-
+var multer = require('multer')
+var path = require('path')
 //PORT.
 const PORT = 8000;
 //DATABASE CONNECTION.
@@ -16,59 +15,29 @@ const db = require("./database.js");
 //DATABASE COLLECTIONS.
 const Guide = require("./guideSchema.js");
 const User = require("./UserSchema.js");
-const File = require("./fileSchema.js")
 //MIDDLEWARES.
 app.use(bodyParser.json());
 app.use(cors());
-app.use('/uploads', express.static('uploads'))
+
 ////////////////////////ROUTES//////////////////////////////////////
-
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, DIR);
-  },
+  destination: "./src/assets/img",
   filename: (req, file, cb) => {
-    const fileName = file.originalname.toLowerCase().split(' ').join('-');
-    cb(null, '-' + fileName)
+    cb(null, Date.now() + path.extname(file.originalname))
   }
-})
-
-var upload = multer({
-  storage: storage,
-  fileFilter: (req, file, cb) => {
-    if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
-      cb(null, true);
-    } else {
-      cb(null, false);
-      return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
-    }
-  }
-})
-
-
-
-app.post("/file", upload.single('file'), (req, res, next) => {
-  const url = req.protocol + '://' + req.get('host')
-  const imgs = {
-    file: url + '/uploads/' + req.file.filename
-  }
-  File.create(imgs).then((img) => {
-    res.send(img);
-  });
 });
-
-// app.get('/file', (req, res) => {
-//   File.find({}, (err, docs) => {
-//     res.send(docs)
-//   });
-// })
-
-
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype == "image/jpeg" || file.mimetype == "image/png") {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+const upload = multer({ storage: storage, fileFilter: fileFilter });
 
 ////////////////////////////
 //  CRTEATE a Guide
-app.post("/guides", (req, res) => {
-  const url = req.protocol + '://' + req.get('host')
+app.post("/guides", upload.single("imageFile"), (req, res) => {
   let newGuide = {
     name: req.body.name,
     description: req.body.description,
@@ -78,9 +47,10 @@ app.post("/guides", (req, res) => {
     city: req.body.city,
     phone: req.body.number,
     email: req.body.email,
+    fileName: req.file.filename,
   };
   Guide.create(newGuide).then((guide) => {
-    res.status(201).json(guide);
+    res.status(201).json(guide)
   });
 });
 
@@ -93,7 +63,10 @@ app.get("/guides", (req, res) => {
     }
   });
 });
-
+// app.get('/img', (req, res) => {
+//   res.send('./src/assets/img/1596806363630.png')
+// })
+// app.use('/img', express.static(path.join(__dirname, './src/assets/img/1596806363630.png')))
 //this is for deleting one guide // OK
 app.delete("/guides/:name", (req, res) => {
   Guide.findOneAndRemove({ name: req.params.name }, (err, guide) => {
@@ -103,7 +76,6 @@ app.delete("/guides/:name", (req, res) => {
     }
   });
 });
-
 //this for updating a guide// CHECK THE IMG UPDATE AND LANGUAGE ARRAY
 app.put("/guides/:name", (req, res) => {
   Guide.findOneAndUpdate({ name: req.params.name }, req.body, (err, guide) => {
@@ -113,7 +85,6 @@ app.put("/guides/:name", (req, res) => {
     }
   });
 });
-
 //OMAR----CREATE A USER IF THAT THE EMAIL USED IS NOT ALREADY TAKED FROM ANOTHER USER AND HASH THE PASSWORD----OMAR\\
 app.post("/signUp", (req, res) => {
   let newUser = {

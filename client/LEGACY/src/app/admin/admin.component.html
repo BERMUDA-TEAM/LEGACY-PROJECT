@@ -12,7 +12,7 @@
         <p>Gender : {{oneGuide.gender}}</p>
         <p>Languages : {{oneGuide.languages}}</p>
         <p>City : {{oneGuide.city}}</p>
-        <img src={{oneGuide.img}} class="rounded mx-auto d-block">
+        <img src={{oneGuide.fileName}} class="rounded mx-auto d-block">
         <p>Mail : {{oneGuide.email}} </p>
         <button (click)="deleteAguide(oneGuide.name)">Delete</button>
         <button (click)="updateAguide(oneGuide.name , oneGuide.description)">Update</button>
@@ -54,15 +54,7 @@
         <input [(ngModel)]="city" id="city" type="text" class="form-control" [ngModelOptions]="{standalone: true}">
     </div>
 
-    <div className="custom-file">
-        <div className="row">
-            <form>
-                <div className="form-group">
-                    <input type="file" (change)="changeHandler($event)" />
-                </div>
-            </form>
-        </div>
-    </div>
+    <input type="file" (change)="fileHandler($event)" />
 
     <div class="form-group">
         <label for="email">E-Mail</label>
