@@ -21,7 +21,7 @@ app.use(cors());
 
 ////////////////////////ROUTES//////////////////////////////////////
 const storage = multer.diskStorage({
-  destination: "./src/assets/img",
+  destination: "./client/LEGACY/src/assets/img",
   filename: (req, file, cb) => {
     cb(null, Date.now() + path.extname(file.originalname))
   }
@@ -63,13 +63,14 @@ app.get("/guides", (req, res) => {
     }
   });
 });
-// app.get('/img', (req, res) => {
-//   res.send('./src/assets/img/1596806363630.png')
-// })
-// app.use('/img', express.static(path.join(__dirname, './src/assets/img/1596806363630.png')))
+
+// app.use('/static', express.static('./src/assets/img'))
+
+
+
 //this is for deleting one guide // OK
-app.delete("/guides/:name", (req, res) => {
-  Guide.findOneAndRemove({ name: req.params.name }, (err, guide) => {
+app.delete("/guides/", (req, res) => {
+  Guide.findOneAndRemove({ name: req.query.name }, (err, guide) => {
     if (err) res.json("can not find or remove this guide name @ /guides/:name");
     else {
       res.status(201).json(guide);

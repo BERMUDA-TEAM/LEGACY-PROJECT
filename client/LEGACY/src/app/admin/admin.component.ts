@@ -29,6 +29,7 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     this.guides = this.http.get(this.allGuidesUrl)
       .subscribe((datas) => {
+        console.log(datas)
         this.allGuides = datas
       })
   }
@@ -41,7 +42,7 @@ export class AdminComponent implements OnInit {
   }
 
   deleteAguide(name) {
-    this.http.delete(this.allGuidesUrl + "/" + name).subscribe(() => {
+    this.http.delete(this.allGuidesUrl + "/?name=" + name).subscribe(() => {
       this.ngOnInit()
     })
   }
@@ -52,6 +53,7 @@ export class AdminComponent implements OnInit {
   languages = ""
   city = ""
   email = ""
+
   onSubmit() {
     // const formData = new FormData()
     // formData.append('file', this.file)

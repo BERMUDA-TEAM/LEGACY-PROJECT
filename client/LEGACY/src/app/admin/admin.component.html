@@ -12,10 +12,11 @@
         <p>Gender : {{oneGuide.gender}}</p>
         <p>Languages : {{oneGuide.languages}}</p>
         <p>City : {{oneGuide.city}}</p>
-        <img src={{oneGuide.fileName}} class="rounded mx-auto d-block">
+
+        <img src="../../assets/img/{{oneGuide.fileName}}" class="rounded mx-auto d-block">
         <p>Mail : {{oneGuide.email}} </p>
         <button (click)="deleteAguide(oneGuide.name)">Delete</button>
-        <button (click)="updateAguide(oneGuide.name , oneGuide.description)">Update</button>
+        <!-- <button (click)="updateAguide(oneGuide.name , oneGuide.description)">Update</button> -->
     </div>
 </div>
 <br>
