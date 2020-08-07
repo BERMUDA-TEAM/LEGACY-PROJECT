@@ -8,9 +8,9 @@ import { AuthService } from './auth.service';
   styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent implements OnInit {
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private router: Router) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   UserName: string = '';
   AdressMail: string = '';
@@ -26,7 +26,10 @@ export class SignUpComponent implements OnInit {
         this.FirstName,
         this.LastName,
         this.Password
-      ).then(() => {
+      )
+      .then((re) => {
+        console.log(re);
+        this.router.navigateByUrl('/');
         console.log('navigate');
       })
       .catch(() => {
