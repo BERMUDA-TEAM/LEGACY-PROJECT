@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { Guides } from '../guides'
@@ -12,6 +12,7 @@ export class AdminComponent implements OnInit {
   posts: Guides;
   guides: any;
   allGuides: any = [];
+  // file: any = {};
 
   constructor(private http: HttpClient) {
     this.posts = {
@@ -21,7 +22,7 @@ export class AdminComponent implements OnInit {
       gender: "",
       languages: "",
       city: "",
-      email: "",
+      email: ""
     }
   }
 
@@ -33,6 +34,13 @@ export class AdminComponent implements OnInit {
   }
 
   readonly allGuidesUrl = "http://localhost:8000/guides"
+
+  // changeHandler(event) {
+  //   let file = event.target.files[0]
+  //   console.log("change handler file ", file)
+  // }
+
+
 
   deleteAguide(name) {
     this.http.delete(this.allGuidesUrl + "/" + name).subscribe(() => {
@@ -49,6 +57,14 @@ export class AdminComponent implements OnInit {
   email = ""
 
   onSubmit() {
+    // const formData = new FormData()
+    // formData.append('file', this.file)
+    // console.log("formdata", formData)
+
+    // this.http.post("http://localhost:8000/file", formData).subscribe(datas => {
+    //   console.log("data from server", datas)
+    // })
+
     this.posts.name = this.name
     this.posts.description = this.description
     this.posts.age = this.age
@@ -56,6 +72,7 @@ export class AdminComponent implements OnInit {
     this.posts.languages = this.languages
     this.posts.city = this.city
     this.posts.email = this.email
+
     this.http.post(this.allGuidesUrl + "/" + name, this.posts).subscribe(() => {
       this.ngOnInit()
     })

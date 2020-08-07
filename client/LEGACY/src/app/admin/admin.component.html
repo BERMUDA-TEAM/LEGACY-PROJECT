@@ -58,7 +58,7 @@
         <div className="row">
             <form>
                 <div className="form-group">
-                    <input type="file" />
+                    <input type="file" (change)="changeHandler($event)" />
                 </div>
             </form>
         </div>

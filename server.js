@@ -57,11 +57,11 @@ app.post("/file", upload.single('file'), (req, res, next) => {
   });
 });
 
-app.get('/file', (req, res) => {
-  File.find({}, (err, docs) => {
-    res.send(docs)
-  });
-})
+// app.get('/file', (req, res) => {
+//   File.find({}, (err, docs) => {
+//     res.send(docs)
+//   });
+// })
 
 
 
