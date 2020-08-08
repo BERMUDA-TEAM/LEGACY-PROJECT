@@ -1,24 +1,3 @@
-/* .form {
-  width: 500px;
-  padding: 10px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-#button {
-  margin-top: 13px;
-  width: 481px;
-}
-
-#Adress-Mail-Text {
-  margin-top: 7px;
-}
-
-#Password-Text {
-  margin-top: 7px;
-} */
 
 * {
 	margin: 0px; 
@@ -31,7 +10,6 @@ body, html {
 	font-family: Poppins-Regular, sans-serif;
 }
 
-/*---------------------------------------------*/
 a {
 	font-family: Poppins-Regular;
 	font-size: 14px;
@@ -53,7 +31,6 @@ a:hover {
   color: #333333;
 }
 
-/*---------------------------------------------*/
 h1,h2,h3,h4,h5,h6 {
 	margin: 0px;
 }
@@ -71,8 +48,6 @@ ul, li {
 	list-style-type: none;
 }
 
-
-/*---------------------------------------------*/
 input {
 	outline: none;
 	border: none;

@@ -1,0 +1,35 @@
+<div id="wrapper">
+  <div>
+    <div id="Profile">
+      {{ guide.name }} <br />
+      Age : {{ guide.age }}<br />
+      Gender :{{ guide.gender }}<br />
+      <br />Description:{{ guide.description }}<br />
+      Langauges:{{guide.languages}}
+      <!-- <img src="{{guide.fileName}}" class="rounded mx-auto d-block"> -->
+      <br />email:{{ guide.email }}<br />
+
+      <br />
+      <div *ngIf="sendType">
+        <textarea *ngIf="reviewType" [(ngModel)]="inputReview"></textarea>
+        <br />
+        <button
+          *ngIf="reviewType"
+          class="btn btn-warning"
+          (click)="addReview()"
+        >
+          Send
+        </button>
+        <button class="btn btn-success" (click)="reviewIn()">
+          Add review
+        </button>
+        <br />
+      </div>
+      <div *ngIf="!sendType">
+        <p id="comment">{{ allReviews[allReviews.length - 1].review }} , {{SentReviews}} </p>
+         <!-- <p id="comment2"> </p> -->
+          
+      </div>
+    </div>
+  </div>
+</div>

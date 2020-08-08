@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,11 @@ import { LoginService } from './login.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private auth: LoginService, private router: Router) {}
+  constructor(
+    private auth: LoginService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -19,10 +24,13 @@ export class LoginComponent implements OnInit {
     this.auth
       .LogIn(this.AdressMail, this.Password)
       .then(() => {
+        this.toastr.success('Welcome', 'Connected');
+        this.router.navigateByUrl('/user');
         console.log('navigate');
       })
-      .catch(() => {
-        console.log('err');
+      .catch((err) => {
+        this.toastr.error('Incorrect Mail & Password', 'Error');
+        console.log(err);
       });
   }
 }
