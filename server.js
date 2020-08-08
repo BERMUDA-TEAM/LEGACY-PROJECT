@@ -6,27 +6,38 @@ const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-
+var multer = require('multer')
+var path = require('path')
 //PORT.
 const PORT = 8000;
-
-//MULTER PHOTO STORAGE.
-const DIR = "./uploads/";
-
 //DATABASE CONNECTION.
 const db = require("./database.js");
-
 //DATABASE COLLECTIONS.
 const Guide = require("./guideSchema.js");
-const User = require("./UserSchema");
-
+const User = require("./UserSchema.js");
 //MIDDLEWARES.
 app.use(bodyParser.json());
 app.use(cors());
 
 ////////////////////////ROUTES//////////////////////////////////////
-//CRTEATE a Guide
-app.post("/guides", (req, res) => {
+const storage = multer.diskStorage({
+  destination: "./client/LEGACY/src/assets/img",
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname))
+  }
+});
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype == "image/jpeg" || file.mimetype == "image/png") {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+const upload = multer({ storage: storage, fileFilter: fileFilter });
+
+////////////////////////////
+//  CRTEATE a Guide
+app.post("/guides", upload.single("imageFile"), (req, res) => {
   let newGuide = {
     name: req.body.name,
     description: req.body.description,
@@ -36,9 +47,10 @@ app.post("/guides", (req, res) => {
     city: req.body.city,
     phone: req.body.number,
     email: req.body.email,
+    fileName: req.file.filename,
   };
   Guide.create(newGuide).then((guide) => {
-    res.status(201).json(guide);
+    res.status(201).json(guide)
   });
 });
 
@@ -52,16 +64,19 @@ app.get("/guides", (req, res) => {
   });
 });
 
+// app.use('/static', express.static('./src/assets/img'))
+
+
+
 //this is for deleting one guide // OK
-app.delete("/guides/:name", (req, res) => {
-  Guide.findOneAndRemove({ name: req.params.name }, (err, guide) => {
+app.delete("/guides/", (req, res) => {
+  Guide.findOneAndRemove({ name: req.query.name }, (err, guide) => {
     if (err) res.json("can not find or remove this guide name @ /guides/:name");
     else {
       res.status(201).json(guide);
     }
   });
 });
-
 //this for updating a guide// CHECK THE IMG UPDATE AND LANGUAGE ARRAY
 app.put("/guides/:name", (req, res) => {
   Guide.findOneAndUpdate({ name: req.params.name }, req.body, (err, guide) => {
@@ -71,7 +86,6 @@ app.put("/guides/:name", (req, res) => {
     }
   });
 });
-
 //OMAR----CREATE A USER IF THAT THE EMAIL USED IS NOT ALREADY TAKED FROM ANOTHER USER AND HASH THE PASSWORD----OMAR\\
 app.post("/signUp", (req, res) => {
   let newUser = {
