@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-guide',
@@ -7,20 +8,22 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./guide.component.css'],
 })
 export class GuideComponent implements OnInit {
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private toastr: ToastrService) {
     this.getReviews();
   }
+  // allGuides: any[];
   reviewType = false;
   sendType = true;
   inputReview: string = '';
   allReviews: any;
-  SentReviews:any=[]
+  SentReviews: any = [];
   //x=this.allReviews[(this.allReviews.length)-1].review
 
   @Input() guide: any;
   ngOnInit(): void {
     this.getReviews();
-    this.sentReviews()
+    this.sentReviews();
+    this.guide;
   }
 
   reviewIn() {
@@ -32,6 +35,8 @@ export class GuideComponent implements OnInit {
     this.http
       .post('http://localhost:8000/reviews', { review: this.inputReview })
       .subscribe((data) => {
+        this.toastr.success('REVIEW ADDED!');
+
         this.ngOnInit();
       });
   }
@@ -42,15 +47,18 @@ export class GuideComponent implements OnInit {
     });
   }
 
-  sentReviews(){
-    if (this.allReviews.length>=5){
-      for( var i = this.allReviews.length-1 ; i >this.allReviews.length-5 ; i -- ){
-        this.SentReviews.push(this.allReviews[i].review)
+  sentReviews() {
+    if (this.allReviews.length >= 5) {
+      for (
+        var i = this.allReviews.length - 1;
+        i > this.allReviews.length - 5;
+        i--
+      ) {
+        this.SentReviews.push(this.allReviews[i].review);
       }
-    }
-    else {
-      for( var i = this.allReviews.length-1 ; i >0 ; i -- ){
-        this.SentReviews.push(this.allReviews[i].review)
+    } else {
+      for (var i = this.allReviews.length - 1; i > 0; i--) {
+        this.SentReviews.push(this.allReviews[i].review);
       }
     }
   }

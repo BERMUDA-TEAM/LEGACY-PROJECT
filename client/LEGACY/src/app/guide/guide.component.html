@@ -5,8 +5,12 @@
       Age : {{ guide.age }}<br />
       Gender :{{ guide.gender }}<br />
       <br />Description:{{ guide.description }}<br />
-      Langauges:{{guide.languages}}
-      <!-- <img src="{{guide.fileName}}" class="rounded mx-auto d-block"> -->
+      Langauges:{{ guide.languages }}
+      <img
+        src="../../assets/img/{{ guide.fileName }} "
+        class="rounded mx-auto d-block"
+        width="120px"
+      />
       <br />email:{{ guide.email }}<br />
 
       <br />
@@ -26,9 +30,10 @@
         <br />
       </div>
       <div *ngIf="!sendType">
-        <p id="comment">{{ allReviews[allReviews.length - 1].review }} , {{SentReviews}} </p>
-         <!-- <p id="comment2"> </p> -->
-          
+        <p id="comment">
+          {{ allReviews[allReviews.length - 1].review }} , {{ SentReviews }}
+        </p>
+        <!-- <p id="comment2"> </p> -->
       </div>
     </div>
   </div>

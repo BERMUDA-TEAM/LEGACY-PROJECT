@@ -16,8 +16,10 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.27",
+    "mongodb": "^3.6.0",
+    "mongoose": "^5.9.28",
     "multer": "^1.4.2",
+    "node": "^14.7.0",
     "nodemon": "^2.0.4",
     "path": "^0.12.7",
     "simple-line-icons": "^2.5.2"

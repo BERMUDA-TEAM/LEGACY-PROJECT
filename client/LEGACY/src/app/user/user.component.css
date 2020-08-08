@@ -15,23 +15,26 @@
 }
 
 #searchBar {
-  position:absolute;
-  
+  position: absolute;
 
-  left:240;
-  right:250px;
+  left: 240;
+  right: 250px;
   height: 300px;
   width: 450px;
 }
 
 #buttonSelect {
-  position:absolute;
-  left:140;
-  right:550px;
-
+  position: absolute;
+  left: 140;
+  right: 550px;
 }
 #buttonAll {
-  position:absolute;
-  left:140;
-  right:604px;
+  margin-top: 15px;
+  margin-left: 46%;
+}
+
+.search {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 43%;
 }

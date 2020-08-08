@@ -32,7 +32,10 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 1500,
+      progressBar: true,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
