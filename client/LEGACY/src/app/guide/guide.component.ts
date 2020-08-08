@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-guide',
@@ -7,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./guide.component.css'],
 })
 export class GuideComponent implements OnInit {
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private toastr: ToastrService) {
     this.getReviews();
   }
   // allGuides: any[];
@@ -34,6 +35,8 @@ export class GuideComponent implements OnInit {
     this.http
       .post('http://localhost:8000/reviews', { review: this.inputReview })
       .subscribe((data) => {
+        this.toastr.success('REVIEW ADDED!');
+
         this.ngOnInit();
       });
   }

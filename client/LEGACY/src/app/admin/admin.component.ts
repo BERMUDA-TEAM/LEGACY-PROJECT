@@ -1,33 +1,32 @@
 import { Component, OnInit, ComponentFactoryResolver } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs'
-import { Guides } from '../guides'
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Guides } from '../guides';
 import { getLocaleDateFormat } from '@angular/common';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent implements OnInit {
   // guides: any;
   allGuides: any = [];
   public selectedFile;
-  public show: boolean = false
-  public term: string = ""
-  arrSearched: Array<{ name: string }>
+  public show: boolean = false;
+  public term: string = '';
+  arrSearched: Array<{ name: string }>;
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient, private toastr: ToastrService) {}
   ngOnInit(): void {
-    this.fetchData()
+    this.fetchData();
   }
-  readonly allGuidesUrl = "http://localhost:8000/guides"
+  readonly allGuidesUrl = 'http://localhost:8000/guides';
   fetchData() {
-    this.http.get(this.allGuidesUrl)
-      .subscribe((datas) => {
-        this.allGuides = datas
-      })
+    this.http.get(this.allGuidesUrl).subscribe((datas) => {
+      this.allGuides = datas;
+    });
   }
 
   fileHandler(e) {
@@ -35,32 +34,36 @@ export class AdminComponent implements OnInit {
   }
 
   deleteAguide(name) {
-    this.http.delete(this.allGuidesUrl + "/?name=" + name).subscribe(() => {
-      this.ngOnInit()
-    })
+    this.http.delete(this.allGuidesUrl + '/?name=' + name).subscribe(() => {
+      this.toastr.success('GUIDE DELETED');
+      this.ngOnInit();
+    });
   }
 
-  name = ""
-  description = ""
-  age = ""
-  gender = ""
-  languages = ""
-  city = ""
-  email = ""
+  name = '';
+  description = '';
+  age = '';
+  gender = '';
+  languages = '';
+  city = '';
+  email = '';
 
   onSubmit() {
     const uploadData = new FormData();
-    uploadData.append("imageFile", this.selectedFile);
-    uploadData.append("name", this.name)
-    uploadData.append("description", this.description)
-    uploadData.append("age", this.age)
-    uploadData.append("gender", this.gender)
-    uploadData.append("languages", this.languages)
-    uploadData.append("city", this.city)
-    uploadData.append("email", this.email)
-    this.http.post(this.allGuidesUrl + "/" + name, uploadData).subscribe((data) => {
-      this.ngOnInit()
-    })
+    uploadData.append('imageFile', this.selectedFile);
+    uploadData.append('name', this.name);
+    uploadData.append('description', this.description);
+    uploadData.append('age', this.age);
+    uploadData.append('gender', this.gender);
+    uploadData.append('languages', this.languages);
+    uploadData.append('city', this.city);
+    uploadData.append('email', this.email);
+    this.http
+      .post(this.allGuidesUrl + '/' + name, uploadData)
+      .subscribe((data) => {
+        this.toastr.success('Succes', 'Guide Added  ');
+        this.ngOnInit();
+      });
   }
 
   // updateAguide(name) {
@@ -77,8 +80,10 @@ export class AdminComponent implements OnInit {
   // }
 
   changeGuides() {
-    this.http.post("http://localhost:8000/searchGuides", { name: this.term }).subscribe((data) => {
-      this.allGuides = data
-    })
+    this.http
+      .post('http://localhost:8000/searchGuides', { name: this.term })
+      .subscribe((data) => {
+        this.allGuides = data;
+      });
   }
 }
