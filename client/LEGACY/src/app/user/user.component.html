@@ -5,14 +5,14 @@
     >Log Out</a
   >
 </nav>
-
+<input type="text" placeholder="Search a guide by name" name="search" />
 <nav class="navbar navbar-light bg-light">
   <span class="navbar-brand mb-0 h1">
     Discover more with our guides, you will love the place!</span
   >
 </nav>
 
-<div id="searchBar">
+<!-- <div id="searchBar">
   <select class="form-control">
     <option defaultValue>Cities</option>
     <option value="Beja">Beja</option>
@@ -60,14 +60,14 @@
 <br /><br /><br /><br /><br /><br />
 <button class="btn btn-danger" id="buttonSelect">Select your guide</button>
 <br />
-<br />
+<br /> -->
 
 <button class="btn btn-danger" id="buttonAll" (click)="getUsers()">
   All guides
 </button>
 <br /><br /><br />
 <div id="wrapper">
-<span *ngFor="let guide of allGuides">
-  <app-guide [guide]="guide"></app-guide
-></span>
+  <span *ngFor="let guide of allGuides">
+    <app-guide [guide]="guide"></app-guide
+  ></span>
 </div>

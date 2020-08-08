@@ -6,8 +6,8 @@ const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-var multer = require('multer')
-var path = require('path')
+var multer = require("multer");
+var path = require("path");
 //PORT.
 const PORT = 8000;
 //DATABASE CONNECTION.
@@ -15,17 +15,16 @@ const db = require("./database.js");
 //DATABASE COLLECTIONS.
 const Guide = require("./guideSchema.js");
 const User = require("./UserSchema.js");
-const Review = require("./reviewSchema.js")
+const Review = require("./reviewSchema.js");
 //MIDDLEWARES.
 app.use(bodyParser.json());
 app.use(cors());
-
 ////////////////////////ROUTES//////////////////////////////////////
 const storage = multer.diskStorage({
   destination: "./client/LEGACY/src/assets/img",
   filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname))
-  }
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
 });
 const fileFilter = (req, file, cb) => {
   if (file.mimetype == "image/jpeg" || file.mimetype == "image/png") {
@@ -35,7 +34,6 @@ const fileFilter = (req, file, cb) => {
   }
 };
 const upload = multer({ storage: storage, fileFilter: fileFilter });
-
 ////////////////////////////
 //  CRTEATE a Guide
 app.post("/guides", upload.single("imageFile"), (req, res) => {
@@ -51,10 +49,9 @@ app.post("/guides", upload.single("imageFile"), (req, res) => {
     fileName: req.file.filename,
   };
   Guide.create(newGuide).then((guide) => {
-    res.status(201).json(guide)
+    res.status(201).json(guide);
   });
 });
-
 //this is for getting all guides // OK
 app.get("/guides", (req, res) => {
   Guide.find({}, (err, guides) => {
@@ -64,11 +61,15 @@ app.get("/guides", (req, res) => {
     }
   });
 });
-
-// app.use('/static', express.static('./src/assets/img'))
-
-
-
+//serach bar
+app.post("/searchGuides", (req, res) => {
+  Guide.find({ name: new RegExp(req.body.name, "i") }, (err, guides) => {
+    if (err) res.json("can not find this guide at @ /guides");
+    else {
+      res.status(200).json(guides);
+    }
+  });
+});
 //this is for deleting one guide // OK
 app.delete("/guides/", (req, res) => {
   Guide.findOneAndRemove({ name: req.query.name }, (err, guide) => {
@@ -118,7 +119,6 @@ app.post("/signUp", (req, res) => {
       res.send("ERROOOOR");
     });
 });
-
 //OMAR----COMPARE HASHED PASSWORD WITH ENTRED PASSWORD AND IF ALL IS CORRECT GIVE A TOKE THAT AUTHENTICATE THE USER.----OMAR\\
 app.post("/LogIn", (req, res) => {
   User.findOne({ addressMail: req.body.addressMail }, (error, user) => {
@@ -172,5 +172,3 @@ app.listen(PORT, (err) => {
   }
   console.log(`Local Guide is running on http://localhost:${PORT}`);
 });
-
-

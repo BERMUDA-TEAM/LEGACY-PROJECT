@@ -11,7 +11,8 @@ import { MainComponent } from './main/main.component';
 import { UserComponent } from './user/user.component';
 import { AdminComponent } from './admin/admin.component';
 import { GuideComponent } from './guide/guide.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { GuideComponent } from './guide/guide.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
