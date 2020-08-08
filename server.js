@@ -6,8 +6,8 @@ const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-var multer = require('multer')
-var path = require('path')
+var multer = require("multer");
+var path = require("path");
 //PORT.
 const PORT = 8000;
 //DATABASE CONNECTION.
@@ -15,6 +15,7 @@ const db = require("./database.js");
 //DATABASE COLLECTIONS.
 const Guide = require("./guideSchema.js");
 const User = require("./UserSchema.js");
+const Review = require("./reviewSchema.js");
 //MIDDLEWARES.
 app.use(bodyParser.json());
 app.use(cors());
@@ -22,8 +23,8 @@ app.use(cors());
 const storage = multer.diskStorage({
   destination: "./client/LEGACY/src/assets/img",
   filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname))
-  }
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
 });
 const fileFilter = (req, file, cb) => {
   if (file.mimetype == "image/jpeg" || file.mimetype == "image/png") {
@@ -48,7 +49,7 @@ app.post("/guides", upload.single("imageFile"), (req, res) => {
     fileName: req.file.filename,
   };
   Guide.create(newGuide).then((guide) => {
-    res.status(201).json(guide)
+    res.status(201).json(guide);
   });
 });
 //this is for getting all guides // OK
@@ -62,7 +63,7 @@ app.get("/guides", (req, res) => {
 });
 //serach bar
 app.post("/searchGuides", (req, res) => {
-  Guide.find({ "name": new RegExp(req.body.name, 'i') }, (err, guides) => {
+  Guide.find({ name: new RegExp(req.body.name, "i") }, (err, guides) => {
     if (err) res.json("can not find this guide at @ /guides");
     else {
       res.status(200).json(guides);
@@ -136,6 +137,34 @@ app.post("/LogIn", (req, res) => {
     }
   });
 });
+
+app.get("/one", (req, res) => {
+  Guide.find({ gender: req.query.gender, city: req.query.city }).then(
+    (result) => {
+      res.send(result);
+    }
+  );
+});
+// Create a review in dataBase
+
+app.post("/reviews", (req, res) => {
+  console.log(req.body.review);
+  let newReview = {
+    review: req.body.review,
+  };
+  Review.create(newReview).then((review) => {
+    res.status(201).json(review);
+  });
+});
+app.get("/reviews", (req, res) => {
+  Review.find({}, (err, reviews) => {
+    if (err) res.json("can not find this guide at @ /guides");
+    else {
+      res.status(200).json(reviews);
+    }
+  });
+});
+
 //LISTEN PORT FOR EXRESS APP
 app.listen(PORT, (err) => {
   if (err) {
