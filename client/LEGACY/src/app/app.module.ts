@@ -11,7 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainComponent } from './main/main.component';
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import {ToastrModule} from 'ngx-toastr'
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { UserComponent } from './user/user.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],
   providers: [],
