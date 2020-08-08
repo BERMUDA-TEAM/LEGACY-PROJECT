@@ -60,8 +60,8 @@ app.get("/guides", (req, res) => {
     }
   });
 });
+//serach bar
 app.post("/searchGuides", (req, res) => {
-
   Guide.find({ "name": new RegExp(req.body.name, 'i') }, (err, guides) => {
     if (err) res.json("can not find this guide at @ /guides");
     else {
