@@ -6,27 +6,39 @@ const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-
+var multer = require('multer')
+var path = require('path')
 //PORT.
 const PORT = 8000;
-
-//MULTER PHOTO STORAGE.
-const DIR = "./uploads/";
-
 //DATABASE CONNECTION.
 const db = require("./database.js");
-
 //DATABASE COLLECTIONS.
 const Guide = require("./guideSchema.js");
-const User = require("./UserSchema");
-const Review = require("./reviewSchema");
+const User = require("./UserSchema.js");
+const Review = require("./reviewSchema.js")
 //MIDDLEWARES.
 app.use(bodyParser.json());
 app.use(cors());
 
 ////////////////////////ROUTES//////////////////////////////////////
-//CRTEATE a Guide
-app.post("/guides", (req, res) => {
+const storage = multer.diskStorage({
+  destination: "./client/LEGACY/src/assets/img",
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname))
+  }
+});
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype == "image/jpeg" || file.mimetype == "image/png") {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+const upload = multer({ storage: storage, fileFilter: fileFilter });
+
+////////////////////////////
+//  CRTEATE a Guide
+app.post("/guides", upload.single("imageFile"), (req, res) => {
   let newGuide = {
     name: req.body.name,
     description: req.body.description,
@@ -36,9 +48,10 @@ app.post("/guides", (req, res) => {
     city: req.body.city,
     phone: req.body.number,
     email: req.body.email,
+    fileName: req.file.filename,
   };
   Guide.create(newGuide).then((guide) => {
-    res.status(201).json(guide);
+    res.status(201).json(guide)
   });
 });
 
@@ -52,16 +65,19 @@ app.get("/guides", (req, res) => {
   });
 });
 
+// app.use('/static', express.static('./src/assets/img'))
+
+
+
 //this is for deleting one guide // OK
-app.delete("/guides/:name", (req, res) => {
-  Guide.findOneAndRemove({ name: req.params.name }, (err, guide) => {
+app.delete("/guides/", (req, res) => {
+  Guide.findOneAndRemove({ name: req.query.name }, (err, guide) => {
     if (err) res.json("can not find or remove this guide name @ /guides/:name");
     else {
       res.status(201).json(guide);
     }
   });
 });
-
 //this for updating a guide// CHECK THE IMG UPDATE AND LANGUAGE ARRAY
 app.put("/guides/:name", (req, res) => {
   Guide.findOneAndUpdate({ name: req.params.name }, req.body, (err, guide) => {
@@ -71,7 +87,6 @@ app.put("/guides/:name", (req, res) => {
     }
   });
 });
-
 //OMAR----CREATE A USER IF THAT THE EMAIL USED IS NOT ALREADY TAKED FROM ANOTHER USER AND HASH THE PASSWORD----OMAR\\
 app.post("/signUp", (req, res) => {
   let newUser = {
@@ -81,7 +96,7 @@ app.post("/signUp", (req, res) => {
     lastName: req.body.lastName,
     password: req.body.password,
   };
-
+  console.log(newUser);
   User.findOne({ addressMail: req.body.addressMail })
     .then((user) => {
       if (!user) {
@@ -92,7 +107,7 @@ app.post("/signUp", (req, res) => {
               res.json(user);
             })
             .catch((err) => {
-              res.send(err);
+              res.status(404).send(err);
             });
         });
       } else {
@@ -123,14 +138,6 @@ app.post("/LogIn", (req, res) => {
   });
 });
 
-//LISTEN PORT FOR EXRESS APP
-app.listen(PORT, (err) => {
-  if (err) {
-    console.log("Error : ", err);
-  }
-  console.log(`Local Guide is running on http://localhost:${PORT}`);
-});
-
 app.get("/one", (req, res) => {
   Guide.find({ gender: req.query.gender, city: req.query.city }).then(
     (result) => {
@@ -149,3 +156,21 @@ app.post("/reviews", (req, res) => {
     res.status(201).json(review);
   });
 });
+app.get("/reviews", (req, res) => {
+  Review.find({}, (err, reviews) => {
+    if (err) res.json("can not find this guide at @ /guides");
+    else {
+      res.status(200).json(reviews);
+    }
+  });
+});
+
+//LISTEN PORT FOR EXRESS APP
+app.listen(PORT, (err) => {
+  if (err) {
+    console.log("Error : ", err);
+  }
+  console.log(`Local Guide is running on http://localhost:${PORT}`);
+});
+
+

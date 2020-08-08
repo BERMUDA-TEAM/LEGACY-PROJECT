@@ -1,10 +1,12 @@
 <div id="wrapper">
   <div>
     <div id="Profile">
-      name : {{ guide.name }} <br />
-      age : {{ guide.age }}<br />
-      gender :{{ guide.gender }}<br />
-      <br />description:{{ guide.description }}<br />
+      {{ guide.name }} <br />
+      Age : {{ guide.age }}<br />
+      Gender :{{ guide.gender }}<br />
+      <br />Description:{{ guide.description }}<br />
+      Langauges:{{guide.languages}}
+      <!-- <img src="{{guide.fileName}}" class="rounded mx-auto d-block"> -->
       <br />email:{{ guide.email }}<br />
 
       <br />
@@ -21,11 +23,12 @@
         <button class="btn btn-success" (click)="reviewIn()">
           Add review
         </button>
-
         <br />
       </div>
       <div *ngIf="!sendType">
-        <p>{{ data.review }}</p>
+        <p id="comment">{{ allReviews[allReviews.length - 1].review }} , {{SentReviews}} </p>
+         <!-- <p id="comment2"> </p> -->
+          
       </div>
     </div>
   </div>

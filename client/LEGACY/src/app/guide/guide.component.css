@@ -44,4 +44,16 @@
     height: 300px;
     width: 450px;
   }
+  #comment{
+
+    color:red;
+    font-weight: bold;
+  }
+
+  #comment2{
+
+    color:blue;
+    
+  }
+  
   

@@ -9,19 +9,21 @@ import { HttpClient } from '@angular/common/http';
 export class UserComponent implements OnInit {
   constructor(private http: HttpClient) {}
   allGuides: any = [];
-  //reviewType = false;
-  //inputReview: string;
+  reviewType = false;
+ 
+ //inputReview: string;
   // selectCity: string = '';
   // selectGender: string = '';
 
   guideIn = false;
   ngOnInit(): void {}
-  // reviewIn() {
-  //   this.reviewType = !this.reviewType;
-  // }
+  reviewIn() {
+    this.reviewType = !this.reviewType;
+  }
   getUsers() {
-    return this.http.get('http://localhost:8000/guides').subscribe((datas) => {
-      this.allGuides = datas;
+    this.http.get('http://localhost:8000/guides').subscribe((datas) => {
+      console.log(datas);
+      this.allGuides=datas
     });
   }
 
