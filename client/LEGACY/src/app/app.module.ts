@@ -1,4 +1,3 @@
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,11 +10,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainComponent } from './main/main.component';
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
-import {ToastrModule} from 'ngx-toastr'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, SignUpComponent, MainComponent, AdminComponent, UserComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    SignUpComponent,
+    MainComponent,
+    AdminComponent,
+    UserComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,9 +30,12 @@ import {ToastrModule} from 'ngx-toastr'
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot({
+      timeOut: 1500,
+      progressBar: true,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
