@@ -2,6 +2,7 @@ import { Component, OnInit, ComponentFactoryResolver } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { Guides } from '../guides'
+import { getLocaleDateFormat } from '@angular/common';
 
 @Component({
   selector: 'app-admin',
@@ -9,36 +10,28 @@ import { Guides } from '../guides'
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  // posts: Guides;
-  guides: any;
+  // guides: any;
   allGuides: any = [];
-  // file: any = {};
   public selectedFile;
-  constructor(private http: HttpClient) {
-    // this.posts = {
-    //   name: "",
-    //   description: "",
-    //   age: 33,
-    //   gender: "",
-    //   languages: "",
-    //   city: "",
-    //   email: ""
-    // }
-  }
+  public show: boolean = false
+  public term: string = ""
+  arrSearched: Array<{ name: string }>
 
+  constructor(private http: HttpClient) {
+  }
   ngOnInit(): void {
-    this.guides = this.http.get(this.allGuidesUrl)
+    this.fetchData()
+  }
+  readonly allGuidesUrl = "http://localhost:8000/guides"
+  fetchData() {
+    this.http.get(this.allGuidesUrl)
       .subscribe((datas) => {
-        console.log(datas)
         this.allGuides = datas
       })
   }
 
-  readonly allGuidesUrl = "http://localhost:8000/guides"
-
   fileHandler(e) {
     this.selectedFile = e.target.files[0];
-    console.log(this.selectedFile)
   }
 
   deleteAguide(name) {
@@ -46,6 +39,7 @@ export class AdminComponent implements OnInit {
       this.ngOnInit()
     })
   }
+
   name = ""
   description = ""
   age = ""
@@ -55,13 +49,6 @@ export class AdminComponent implements OnInit {
   email = ""
 
   onSubmit() {
-    // const formData = new FormData()
-    // formData.append('file', this.file)
-    // console.log("formdata", formData)
-
-    // this.http.post("http://localhost:8000/file", formData).subscribe(datas => {
-    //   console.log("data from server", datas)
-    // })
     const uploadData = new FormData();
     uploadData.append("imageFile", this.selectedFile);
     uploadData.append("name", this.name)
@@ -71,18 +58,27 @@ export class AdminComponent implements OnInit {
     uploadData.append("languages", this.languages)
     uploadData.append("city", this.city)
     uploadData.append("email", this.email)
-
     this.http.post(this.allGuidesUrl + "/" + name, uploadData).subscribe((data) => {
-      console.log(data)
       this.ngOnInit()
     })
   }
 
-
-  // updateAguide(name, description) {
+  // updateAguide(name) {
+  //   this.show = !this.show
   //   this.http.put(this.allGuidesUrl + "/" + name, {}).subscribe((data) => {
   //     console.log(data)
   //   })
   // }
 
+  // onSearch() {
+  //   this.http.get(this.allGuidesUrl).subscribe((searched: any) => {
+  //     this.arrSearched = searched
+  //   })
+  // }
+
+  changeGuides() {
+    this.http.post("http://localhost:8000/searchGuides", { name: this.term }).subscribe((data) => {
+      this.allGuides = data
+    })
+  }
 }
